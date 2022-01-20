@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Abstract
 {
-    interface IWriterDAL : IGenericDAL<Writer>
+    public interface IWriterDAL : IGenericDAL<Writer>
     {
     }
 }

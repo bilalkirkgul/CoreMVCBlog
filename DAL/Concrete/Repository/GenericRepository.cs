@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Concrete.Repository
 {
-    class GenericRepository<TEntity> : IGenericDAL<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IGenericDAL<TEntity> where TEntity : class
     {
 
         //Todo :Crud işlemleri EntityState yapısı ile revize edilecek

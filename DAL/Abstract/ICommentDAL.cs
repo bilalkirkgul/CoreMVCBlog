@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Abstract
 {
-    interface ICommentDAL : IGenericDAL<Comment>
+    public interface ICommentDAL : IGenericDAL<Comment>
     {
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Abstract
 {
-    interface IBlogDAL : IGenericDAL<Blog>
+    public interface IBlogDAL : IGenericDAL<Blog>
     {
     }
 }

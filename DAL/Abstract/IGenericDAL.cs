@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Abstract
 {
-   public interface IGenericDAL<TEntitiy> where TEntitiy : class
+    public interface IGenericDAL<TEntitiy> where TEntitiy : class
     {
         //GetAll işlemi ve get işlemi revize edilecek (Expression<Func<TEntity,bool>>filter) 
         void Insert(TEntitiy entitiy);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Abstract
 {
-    interface IAboutDAL : IGenericDAL<About>
+   public interface IAboutDAL : IGenericDAL<About>
     {
     }
 }

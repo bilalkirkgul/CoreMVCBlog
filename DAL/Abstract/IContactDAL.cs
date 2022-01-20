@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Abstract
 {
-    interface IContactDAL : IGenericDAL<Contact>
+    public interface IContactDAL : IGenericDAL<Contact>
     {
     }
 }
