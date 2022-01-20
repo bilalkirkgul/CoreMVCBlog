@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EntityLayer.Concrete
+{
+   public class Blog
+    {
+        [Key]
+        public int BlogID { get; set; }
+        public string BlogTitle { get; set; }
+        public string BlogContent { get; set; }
+
+        //Küçük resim kapak fotografı
+        public string BlogThumbnailImage { get; set; }
+        public string BlogImage { get; set; }
+        public DateTime BlogCreateDate { get; set; }
+        public bool BlogStatus { get; set; }
+
+        //bir blogun bir kategorisi olur
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
+
+        //Bir blogun birden fazla yorumu olur
+        public ICollection<Comment> Comments { get; set; }
+    }
+}
