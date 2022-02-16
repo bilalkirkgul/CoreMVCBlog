@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace DAL.Concrete.Repository
     public class GenericRepository<TEntity> : IGenericDAL<TEntity> where TEntity : class
     {
 
-        //Todo :Crud işlemleri EntityState yapısı ile revize edilecek
+     
 
         public void Delete(TEntity entitiy)
         {
@@ -19,17 +20,29 @@ namespace DAL.Concrete.Repository
             context.SaveChanges();
         }
 
-        public ICollection<TEntity> GetAll()
+      
+        public TEntity GetById(Expression<Func<TEntity, bool>> filter)
         {
             using var context = new BlogDbContext();
-           return context.Set<TEntity>().ToList();
+            return context.Set<TEntity>().Where(filter).SingleOrDefault();
         }
 
-        public TEntity GetById(int entityId)
+        public List<TEntity> GetListAll(Expression<Func<TEntity, bool>> filter)
         {
             using var context = new BlogDbContext();
-            return context.Set<TEntity>().Find(entityId);
+            return context.Set<TEntity>().Where(filter).ToList();
+          
         }
+        /// <summary>
+        /// Filtresiz çokli seçme için oluşturuldu
+        /// </summary>
+        /// <returns></returns>
+        public List<TEntity> GetListAll()
+        {
+            using var context = new BlogDbContext();
+            return context.Set<TEntity>().ToList();
+        }
+
 
         public void Insert(TEntity entitiy)
         {

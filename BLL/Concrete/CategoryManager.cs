@@ -31,12 +31,12 @@ namespace BLL.Concrete
 
         public Category GetById(int categoryId)
         {
-            return categoryDAL.GetById(categoryId);
+            return categoryDAL.GetById(a=>a.CategoryID==categoryId);
         }
 
         public List<Category> GetList()
         {
-            return categoryDAL.GetAll().ToList();
+            return categoryDAL.GetListAll().ToList();
         }
 
         public void Update(Category category)

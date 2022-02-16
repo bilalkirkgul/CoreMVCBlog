@@ -15,8 +15,9 @@
         @*@{ Html.RenderPartial("_userHeaderNavbar");}*@
     </header>
     <!--//header-->
-
-
+    <!--banner-->
+    <partial name="_userHeaderbannerinner"/>
+    <!--banner end-->
     <div>
         @RenderBody()
     </div>
@@ -27,9 +28,8 @@
 
     @*<partial name="_userFooterPartial"/>*@
     <!---->
-   
     <!--ScriptsPartaial-->
-    <partial name="_userScriptPartial"/>
+    <partial name="_userScriptPartial" />
 
 </body>
 </html>

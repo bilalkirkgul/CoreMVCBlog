@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Concrete.Repository.EntityFramework
 {
-    class EfCommentRepository : GenericRepository<Comment>, ICommentDAL
+   public class EfCommentRepository : GenericRepository<Comment>, ICommentDAL
     {
     }
 }

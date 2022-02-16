@@ -16,36 +16,36 @@ namespace BLL.Concrete
         {
             blogDAL = blog;
         }
-
-
-        public void Add(Blog blog)
+        public void Insert(Blog blog)
         {
-            throw new NotImplementedException();
+            blogDAL.Insert(blog);
         }
-
         public void Delete(Blog blog)
         {
-            throw new NotImplementedException();
+            blogDAL.Delete(blog);
         }
-
-        public List<Blog> GetBlogListCategory()
-        {
-           return blogDAL.GetListWithCategory();
-        }
-
-        public Blog GetById(int blogId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Blog> GetList()
-        {
-           return blogDAL.GetAll().ToList();
-        }
-
         public void Update(Blog blog)
         {
-            throw new NotImplementedException();
+            blogDAL.Update(blog);
         }
+        public List<Blog> GetList()
+        {
+            return blogDAL.GetListAll();
+        }
+        public Blog GetById(int blogId)
+        {
+            return blogDAL.GetById(a => a.BlogID == blogId);
+        }
+        public List<Blog> GetBlogListCategory()
+        {
+            //dal catmanında includes işlemi yaptım
+           return blogDAL.GetListWithCategory();
+        }
+        public List<Blog> GetBlogByIDList(int id)
+        {
+            return blogDAL.GetListAll(a=>a.BlogID==id);
+        }
+
+
     }
 }

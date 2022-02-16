@@ -3,18 +3,8 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-@using EntityLayer.Concrete
 @model List<Blog>
-    <!--/banner-->
-    <div class="banner-inner">
-    </div>
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="index.html">Home</a>
-        </li>
-        <li class="breadcrumb-item active">Blog3</li>
-    </ol>
-    <!--//banner-->
+
     <!--/main-->
     <section class="main-content-w3layouts-agileits">
         <div class="container">
@@ -34,7 +24,7 @@
                                     <ul class="blog-icons my-4">
                                         <li>
                                             <a href="#">
-                                                <i class="far fa-calendar-alt"></i>@item.BlogCreateDate.ToShortDateString()
+                                                <i class="far fa-calendar-alt"></i>@item.BlogCreateDate.ToString("dd-MMM-yyyy")
                                             </a>
                                         </li>
                                         <li class="mx-2">
@@ -50,10 +40,10 @@
 
                                     </ul>
                                     <h5 class="card-title">
-                                        <a href="single.html">@item.BlogTitle</a>
+                                        <a href="@Url.Action("BlogReadAll","Blog",new { blogid=@item.BlogID })">@item.BlogTitle</a>
                                     </h5>
-                                    <p class="card-text mb-3">@item.BlogContent </p>
-                                    <a href="single.html" class="btn btn-primary read-m">Devamını Oku</a>
+                                    <p class="card-text mb-3">@item.BlogContent.Substring(0,item.BlogContent.Substring(0,130).LastIndexOf(""))... </p>
+                                    <a href="@Url.Action("BlogReadAll","Blog",new { blogid=@item.BlogID })" class="btn btn-primary read-m">Devamını Oku</a>
                                 </div>
                             </div>
 

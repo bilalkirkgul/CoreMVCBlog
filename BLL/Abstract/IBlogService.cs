@@ -9,12 +9,16 @@ namespace BLL.Abstract
 {
    public interface IBlogService
     {
-        void Add(Blog blog);
+        void Insert(Blog blog);
         void Delete(Blog blog);
         void Update(Blog blog);
-
-        List<Blog> GetList();
+        List<Blog> GetList();       
         Blog GetById(int blogId);
         List<Blog> GetBlogListCategory();
+      
+        List<Blog> GetBlogByIDList(int id);
+
+
+
     }
 }

@@ -1,0 +1,57 @@
+﻿
+
+
+
+@model List<Comment>
+
+
+<div class="comment-top">
+    <h4>Yorumlar</h4>
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="media">
+            <img src="~/BlogTema/images/t1.jpg" alt="" class="img-fluid" />
+            <div class="media-body">
+
+                <h5 class="mt-0">@item.CommentUserName</h5>
+                <span>
+                    @item.CommentContent
+                </span>
+                <p>
+                    @item.CommentTitle
+                </p>
+
+                <!-- #region cevap için kullanılacak -->
+
+
+                @*<div class="media mt-3">
+                    <a class="d-flex pr-3" href="#">
+                        <img src="~/BlogTema/images/t2.jpg" alt="" class="img-fluid" />
+                    </a>
+                    <div class="media-body">
+                        <h5 class="mt-0">@item.CommentUserName</h5>
+                        <p>
+                            @item.CommentContent
+                        </p>
+                        <p>
+                            @item.CommentTitle
+                        </p>
+                    </div>
+                </div>*@
+
+                <!-- #endregion -->
+
+
+
+
+
+            </div>
+        </div>
+    }
+
+
+
+</div>
