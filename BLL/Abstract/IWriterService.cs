@@ -5,10 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Abstract
+namespace BLL.Abstract
 {
-    public interface ICategoryDAL :IGenericDAL<Category>
+   public interface IWriterService
     {
-       
+
+        void Insert(Writer writer);
+
+
     }
 }

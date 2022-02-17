@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Concrete.Repository.EntityFramework
 {
-    class EfWriterRepository : GenericRepository<Writer>, IWriterDAL
+   public class EfWriterRepository : GenericRepository<Writer>, IWriterDAL
     {
     }
 }

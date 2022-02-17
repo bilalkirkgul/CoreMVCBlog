@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20220120161159_mig03")]
-    partial class mig03
+    [Migration("20220217173751_newmig1702")]
+    partial class newmig1702
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,9 +79,14 @@ namespace DAL.Migrations
                     b.Property<int>("CategoryID")
                         .HasColumnType("int");
 
+                    b.Property<int>("WriterID")
+                        .HasColumnType("int");
+
                     b.HasKey("BlogID");
 
                     b.HasIndex("CategoryID");
+
+                    b.HasIndex("WriterID");
 
                     b.ToTable("Blogs");
                 });
@@ -207,7 +212,15 @@ namespace DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("EntityLayer.Concrete.Writer", "Writer")
+                        .WithMany("Blogs")
+                        .HasForeignKey("WriterID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Category");
+
+                    b.Navigation("Writer");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Comment", b =>
@@ -227,6 +240,11 @@ namespace DAL.Migrations
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Category", b =>
+                {
+                    b.Navigation("Blogs");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Writer", b =>
                 {
                     b.Navigation("Blogs");
                 });

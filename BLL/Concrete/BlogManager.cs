@@ -46,6 +46,10 @@ namespace BLL.Concrete
             return blogDAL.GetListAll(a=>a.BlogID==id);
         }
 
-
+        public List<Blog> GetBlogListByWriter(int id)
+        {
+            //migration öncesi yazıldı düzeltilecek
+            return blogDAL.GetListAll(a => a.BlogID == id);
+        }
     }
 }

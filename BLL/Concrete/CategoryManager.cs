@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Concrete
 {
-    class CategoryManager : ICategoryService
+  public  class CategoryManager : ICategoryService
     {
         ICategoryDAL categoryDAL;
 
@@ -38,7 +38,7 @@ namespace BLL.Concrete
         {
             return categoryDAL.GetListAll().ToList();
         }
-
+       
         public void Update(Category category)
         {
             categoryDAL.Update(category);    

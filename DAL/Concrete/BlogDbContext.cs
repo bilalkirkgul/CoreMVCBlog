@@ -14,7 +14,7 @@ namespace DAL.Concrete
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //Database yolunu belirttik.
-            optionsBuilder.UseSqlServer("server=localhost\\SQLEXPRESS01; database=CoreBlogDB; uid=bilal; pwd=123");
+            optionsBuilder.UseSqlServer("server=localhost\\SQLEXPRESS01; database=CoreBlogDB2022; uid=bilal; pwd=123");
             base.OnConfiguring(optionsBuilder);
         }
 

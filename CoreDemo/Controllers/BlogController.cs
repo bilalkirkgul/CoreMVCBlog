@@ -20,7 +20,9 @@ namespace CoreDemo.Controllers
 
         public IActionResult BlogReadAll(int blogid)
         {
-            var values = bm.GetBlogByIDList(blogid);
+            //id numarasına göre blog listeleme işlemi yaptım.
+            ViewBag.i = blogid;
+            var values = bm.GetBlogByIDList(blogid);            
             return View(values);
         }
     }

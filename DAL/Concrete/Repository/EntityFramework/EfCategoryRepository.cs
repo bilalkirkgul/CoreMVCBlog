@@ -1,5 +1,6 @@
 ﻿using DAL.Abstract;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,10 @@ using System.Threading.Tasks;
 
 namespace DAL.Concrete.Repository.EntityFramework
 {
-    class EfCategoryRepository : GenericRepository<Category>, ICategoryDAL
+   public class EfCategoryRepository : GenericRepository<Category>, ICategoryDAL
     {
+
+      
+
     }
 }

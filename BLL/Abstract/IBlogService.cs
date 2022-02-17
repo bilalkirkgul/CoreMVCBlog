@@ -15,10 +15,9 @@ namespace BLL.Abstract
         List<Blog> GetList();       
         Blog GetById(int blogId);
         List<Blog> GetBlogListCategory();
-      
         List<Blog> GetBlogByIDList(int id);
 
-
+        List<Blog> GetBlogListByWriter(int id);
 
     }
 }
