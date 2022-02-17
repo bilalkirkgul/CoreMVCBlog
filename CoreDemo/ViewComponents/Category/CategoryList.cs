@@ -16,7 +16,7 @@ namespace CoreDemo.ViewComponents.Category
 
         public IViewComponentResult Invoke()
         {
-            var values = category.GetList().ToList();
+            var values = category.GetList().ToList();            
             return View(values);
         }
 

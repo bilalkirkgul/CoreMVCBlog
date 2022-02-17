@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Abstract
 {
-    public interface ICommentDAL : IGenericDAL<Comment>
+   public interface INewsLetterDAL : IGenericDAL<NewsLetter>
     {
-       
     }
 }

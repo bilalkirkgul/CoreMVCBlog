@@ -39,10 +39,11 @@ namespace BLL.Concrete
         //    return commentDAL.GetById(a => a.CommentID == commentId);
         //}
 
-        public List<Comment> GetCommentByList(int id)
-        {
-            return commentDAL.GetListAll(a => a.BlogID == id);
-        }
 
+        public List<Comment> GetCommentByList(int blogId)
+        {
+            return commentDAL.GetListAll(a => a.BlogID == blogId);
+        }
+        
     }
 }

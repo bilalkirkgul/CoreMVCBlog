@@ -55,5 +55,6 @@ namespace BLL.Concrete
         {    //yazarın blokları     
             return blogDAL.GetListAll(a => a.WriterID == writerId);
         }
+
     }
 }

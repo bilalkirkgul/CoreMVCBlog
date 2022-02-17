@@ -16,6 +16,6 @@ namespace BLL.Abstract
         List<Comment> GetList();
         //Comment GetById(int commentId);
 
-        List<Comment> GetCommentByList(int id);
+      
     }
 }

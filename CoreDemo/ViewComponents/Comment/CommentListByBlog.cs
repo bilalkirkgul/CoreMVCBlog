@@ -16,7 +16,7 @@ namespace CoreDemo.ViewComponents.Comment
         public IViewComponentResult Invoke(int id)
         {
            //Blog sayfası yüklenirken beraberinde o bloğa ait yorumları da görmek için bu compenenti oluşturdum. burada almış olduğum parametre blog id sini temsil etmektedir. paramotre bu componente blogreadall sayfasında aktarılıyor. orayada blogreadAll Actionunda yakalanıp veriliyor . GetCommentByList Blog id sine göre yorumları getirme methodudur. ( bkn. bll katmanı commentmaneger).. 
-
+           //blogId sine göre yorumları getirdimm
             var values = comment.GetCommentByList(id);
             if (values.Count>=1)
             {

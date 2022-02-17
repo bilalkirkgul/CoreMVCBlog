@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Abstract
+namespace BLL.Abstract
 {
-    public interface ICommentDAL : IGenericDAL<Comment>
+    interface INewsLetterService
     {
-       
+
+        void Add(NewsLetter newsLetter);
+
     }
 }

@@ -9,6 +9,7 @@ namespace EntityLayer.Concrete
 {
    public class NewsLetter
     {
+        //Abone olma sınıfı, yeni haberler vs.
         [Key]
         public int MailID { get; set; }
         public string Mail { get; set; }

@@ -1,6 +1,5 @@
 ﻿using DAL.Abstract;
 using EntityLayer.Concrete;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Concrete.Repository.EntityFramework
 {
-   public class EfCommentRepository : GenericRepository<Comment>, ICommentDAL
+   public class EfNewsLetterRepository: GenericRepository<NewsLetter>, INewsLetterDAL
     {
-       
     }
 }

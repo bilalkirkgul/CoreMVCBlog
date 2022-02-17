@@ -15,8 +15,7 @@ namespace CoreDemo.ViewComponents.Blog
 
         public IViewComponentResult Invoke(int writerId)
         {
-            var values = blogManager.GetBlogListByWriter(2);
-            //ViewBag.b = writerId;
+            var values = blogManager.GetBlogListByWriter(writerId);            
             return View(values);
         }
 
