@@ -43,13 +43,17 @@ namespace BLL.Concrete
         }
         public List<Blog> GetBlogByIDList(int id)
         {
+            //getbyId tek eleman döndürüyordu bununla birden fazla elman aldık
             return blogDAL.GetListAll(a=>a.BlogID==id);
         }
-
-        public List<Blog> GetBlogListByWriter(int id)
-        {
-            //migration öncesi yazıldı düzeltilecek
-            return blogDAL.GetListAll(a => a.BlogID == id);
+        /// <summary>
+        /// Yazarın Blokları
+        /// </summary>
+        /// <param name="writerId">YazarID</param>
+        /// <returns></returns>
+        public List<Blog> GetBlogListByWriter(int writerId)
+        {    //yazarın blokları     
+            return blogDAL.GetListAll(a => a.WriterID == writerId);
         }
     }
 }

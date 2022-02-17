@@ -22,7 +22,7 @@ namespace CoreDemo.Controllers
         {
             //id numarasına göre blog listeleme işlemi yaptım.
             ViewBag.i = blogid;
-            var values = bm.GetBlogByIDList(blogid);            
+            var values = bm.GetBlogByIDList(blogid);
             return View(values);
         }
     }
