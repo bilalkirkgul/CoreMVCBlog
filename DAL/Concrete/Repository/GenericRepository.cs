@@ -27,21 +27,17 @@ namespace DAL.Concrete.Repository
             return context.Set<TEntity>().Where(filter).SingleOrDefault();
         }
 
-        public List<TEntity> GetListAll(Expression<Func<TEntity, bool>> filter)
+        public List<TEntity> GetListAll(Expression<Func<TEntity, bool>> filter=null)
         {
             using var context = new BlogDbContext();
-            return context.Set<TEntity>().Where(filter).ToList();
-          
+            return filter==null? context.Set<TEntity>().ToList(): context.Set<TEntity>().Where(filter).ToList();
         }
-        /// <summary>
-        /// Filtresiz çokli seçme için oluşturuldu
-        /// </summary>
-        /// <returns></returns>
-        public List<TEntity> GetListAll()
-        {
-            using var context = new BlogDbContext();
-            return context.Set<TEntity>().ToList();
-        }
+        
+        //public List<TEntity> GetListAll()
+        //{
+        //    using var context = new BlogDbContext();
+        //    return context.Set<TEntity>().ToList();
+        //}
 
 
         public void Insert(TEntity entitiy)
