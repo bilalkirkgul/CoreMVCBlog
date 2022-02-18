@@ -1,10 +1,11 @@
 ﻿
-
+@model Blog
 
 <div class="comment-top">
     <h4>Blog için yorumunuz </h4>
     <div class="comment-bottom">
         <form asp-action="PartialAddComment" asp-controller="Comment" method="post">
+            @Html.HiddenFor(a=>a.BlogID)
             <input class="form-control" type="text" name="CommentUserName" placeholder="Adınız, Soyadınız" required="">
             <input class="form-control" type="text" name="CommentTitle" placeholder="Başlık" required="">
             <textarea class="form-control" name="CommentContent" placeholder="Yorumunuz..." required=""></textarea>

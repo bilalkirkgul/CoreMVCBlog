@@ -42,7 +42,7 @@ namespace BLL.Concrete
 
         public List<Comment> GetCommentByList(int id)
         {
-            //blogIdsine göre yorumları listeleme
+            //blogIdsine göre çoklu yorumları listeleme
             return commentDAL.GetListAll(a => a.BlogID == id);
         }
         

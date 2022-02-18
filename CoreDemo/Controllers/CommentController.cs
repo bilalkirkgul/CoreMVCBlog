@@ -31,8 +31,7 @@ namespace CoreDemo.Controllers
         public PartialViewResult PartialAddComment(Comment comment)
         {
             comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            comment.CommentStatus = true;
-            comment.BlogID = 1;
+            comment.CommentStatus = true;            
             commentService.Insert(comment);
             return PartialView();
         }

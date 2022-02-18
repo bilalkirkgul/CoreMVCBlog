@@ -13,7 +13,6 @@ namespace DAL.Abstract
         void Insert(TEntity entitiy);
         void Delete(TEntity entitiy);
         void Update(TEntity entitiy);
-        //List<TEntity> GetListAll();
         TEntity GetById(Expression<Func<TEntity, bool>> filter);
         List<TEntity> GetListAll(Expression<Func<TEntity, bool>> filter=null);
 

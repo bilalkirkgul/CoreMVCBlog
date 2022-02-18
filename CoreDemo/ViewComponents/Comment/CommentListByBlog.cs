@@ -32,7 +32,7 @@ namespace CoreDemo.ViewComponents.Comment
             }
             else
             {
-                ViewBag.Message = "Blog için yorum yapılmamış ilk yorumu siz yapmak ister misiniz ??";
+                ViewBag.Message = "henüz blog için yorum yapılmamış. İlk yorumu siz yapmak ister misiniz ??";
                 return View(values);
             }
 

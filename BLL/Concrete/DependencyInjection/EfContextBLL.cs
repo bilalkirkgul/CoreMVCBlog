@@ -19,6 +19,7 @@ namespace BLL.Concrete.DependencyInjection
             services.AddScoped<ICommentService, CommentManager>();
             services.AddScoped<INewsLetterService, NewsLetterManager>();
             services.AddScoped<IWriterService, WriterManager>();
+            services.AddScoped<IAboutService, AboutManager>();
         }
 
 

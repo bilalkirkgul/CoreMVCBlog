@@ -25,26 +25,36 @@ namespace CoreDemo.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index(Writer p)
+        public IActionResult Index(Writer p, string password2)
         {
 
-            WriterValidator wrudes = new WriterValidator();
-            ValidationResult result = wrudes.Validate(p);
-
-            if (result.IsValid)
+            if (p.WriterPassword==password2)
             {
-                writerService.Insert(p);
-                return RedirectToAction("Index", "Blog");
+                WriterValidator wrudes = new WriterValidator();
+                ValidationResult result = wrudes.Validate(p);
+
+                if (result.IsValid)
+                {
+                    //writerService.Insert(p);
+                    return RedirectToAction("Index", "Blog");
+                }
+                else
+                {
+                    //Tüm hataları dön propertysine hata mesajını ekle
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    }
+                    return View();
+                }
             }
             else
             {
-                //Tüm hataları dön propertysine hata mesajını ekle
-                foreach (var item in result.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
+                ViewBag.Message = "Parolalar eşleşmiyor, Lütfen paralanızı kontrol ediniz";
                 return View();
             }
+
+            
          
 
         }
