@@ -43,5 +43,10 @@ namespace BLL.Concrete
         {
             categoryDAL.Update(category);    
         }
+
+        public List<Category> GetListCategoryBlogCountList()
+        {
+            return categoryDAL.GetListCategoryBlogCountList();
+        }
     }
 }

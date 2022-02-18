@@ -16,5 +16,11 @@ namespace DAL.Concrete.Repository.EntityFramework
             using (var c = new BlogDbContext())
                 return c.Blogs.Include(a => a.Category).ToList();
         }
+
+        public List<Blog> GetListBlogInWriter()
+        {
+            using (var c = new BlogDbContext())
+                return c.Blogs.Include(a => a.Writer).ToList();
+        }
     }
 }

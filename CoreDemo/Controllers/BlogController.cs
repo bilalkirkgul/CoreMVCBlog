@@ -34,5 +34,7 @@ namespace CoreDemo.Controllers
             var values = blogService.GetById(blogid);
             return View(values);
         }
+
+     
     }
 }

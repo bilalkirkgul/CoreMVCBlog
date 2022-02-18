@@ -86,8 +86,7 @@
                     <!---->
 
 
-                    <!--Son Eklenen Postlar 3 tane Listelenecek date ve take kullanılacak ben manüel olarak kullandım.-->
-
+                    <!--Blog detay sayfında listelenen o yazara ait blog postu-->
                     @await Component.InvokeAsync("WriterByLastBlog", new { writerId = Model.WriterID })
                     <!---->
 
@@ -116,9 +115,11 @@
                         </div>
                     </div>
 
-                    <!--Son Eklenen Post 1 tane Listelenecek take kullanılacak-->
+                    <!--Son Eklenen Post 3 tane Listelenecek take kullanılacak-->
 
-                    <div class="single-gd tech-btm">
+                    @await Component.InvokeAsync("LastThreeBlog")
+
+                    @*<div class="single-gd tech-btm">
                         <h4>Son Eklenen Post</h4>
                         <div class="blog-grids">
                             <div class="blog-grid-left">
@@ -134,7 +135,7 @@
                             </div>
                             <div class="clearfix"> </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
 
             </aside>

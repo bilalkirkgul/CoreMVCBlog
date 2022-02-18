@@ -11,6 +11,7 @@ namespace DAL.Abstract
     {
 
         List<Blog> GetListWithCategory();
+        List<Blog> GetListBlogInWriter();
 
     }
 }

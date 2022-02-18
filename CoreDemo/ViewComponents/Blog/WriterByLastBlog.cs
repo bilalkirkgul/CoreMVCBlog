@@ -19,8 +19,9 @@ namespace CoreDemo.ViewComponents.Blog
 
         public IViewComponentResult Invoke(int writerId)
         {
-            var values = blogService.GetBlogListByWriter(writerId);            
+            var values = blogService.GetBlogListByWriter(writerId);
             return View(values);
+           
         }
 
 

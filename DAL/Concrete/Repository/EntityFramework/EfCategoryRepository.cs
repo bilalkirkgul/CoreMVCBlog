@@ -12,7 +12,11 @@ namespace DAL.Concrete.Repository.EntityFramework
    public class EfCategoryRepository : GenericRepository<Category>, ICategoryDAL
     {
 
-      
+        public List<Category> GetListCategoryBlogCountList()
+        {
+            using (var c = new BlogDbContext())
+                return c.Categories.Include(a => a.Blogs).ToList();
+        }
 
     }
 }

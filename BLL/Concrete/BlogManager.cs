@@ -36,6 +36,9 @@ namespace BLL.Concrete
         {
             return blogDAL.GetById(a => a.BlogID == blogId);
         }
+
+
+
         public List<Blog> GetBlogListCategory()
         {
             //dal catmanında includes işlemi yaptım
@@ -53,8 +56,13 @@ namespace BLL.Concrete
         /// <returns></returns>
         public List<Blog> GetBlogListByWriter(int writerId)
         {    //yazarın blokları     
-            return blogDAL.GetListAll(a => a.WriterID == writerId);
+            return blogDAL.GetListAll(a => a.WriterID == writerId).ToList();
         }
 
+        public List<Blog> GetListBlogInWriter()
+        {
+            //blokların yazar bilgilerini çekmek için oluşturuldu. dal da tanımlama yapıldı
+            return blogDAL.GetListBlogInWriter();
+        }
     }
 }

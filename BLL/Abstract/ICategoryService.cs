@@ -9,6 +9,7 @@ namespace BLL.Abstract
 {
    public interface ICategoryService : IGenericBLL<Category>
     {
-       
+        List<Category> GetListCategoryBlogCountList();
+
     }
 }

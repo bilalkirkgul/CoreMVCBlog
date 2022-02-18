@@ -21,7 +21,10 @@ namespace CoreDemo.ViewComponents.Category
 
         public IViewComponentResult Invoke()
         {
-            var values = categoryService.GetList().ToList();            
+            //select CategoryID,Count(*) [Toplam Blog Yazısı] from Blogs Group by CategoryID Order by 2 desc 
+
+            //var values = categoryService.GetList().ToList();
+            var values = categoryService.GetListCategoryBlogCountList().ToList();
             return View(values);
         }
 
