@@ -1,3 +1,4 @@
+using BLL.Concrete.DependencyInjection;
 using BLL.ValidationRules;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -28,6 +29,7 @@ namespace CoreDemo
         {      
             services.AddControllersWithViews().AddFluentValidation();
             services.AddTransient<IValidator, WriterValidator>();
+            services.AddScobeBLL();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,5 +1,4 @@
-﻿using BLL.Concrete;
-using DAL.Concrete.Repository.EntityFramework;
+﻿using BLL.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,11 +9,18 @@ namespace CoreDemo.Controllers
 {
     public class BlogController : Controller
     {
-        BlogManager bm = new BlogManager(new EfBlogRepository());
+        //BlogManager bm = new BlogManager(new EfBlogRepository()); //dependencyInjection yaptım ve interfaceler aracılığıyla hareket ettim. dolayısıyla dal ef class newlemeye gerek kalmadı
+
+        IBlogService blogService;
+
+        public BlogController(IBlogService blog)
+        {
+            blogService = blog;
+        }
 
         public IActionResult Index()
         {
-            var values = bm.GetBlogListCategory();
+            var values = blogService.GetBlogListCategory();
             return View(values);
         }
 
@@ -25,7 +31,7 @@ namespace CoreDemo.Controllers
             //ViewBag.i = blogid; //gerek kalmadı
             //var values = bm.GetBlogByIDList(blogid); 
             #endregion
-            var values = bm.GetById(blogid);
+            var values = blogService.GetById(blogid);
             return View(values);
         }
     }

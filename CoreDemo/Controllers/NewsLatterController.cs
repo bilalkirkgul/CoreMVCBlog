@@ -1,5 +1,4 @@
-﻿using BLL.Concrete;
-using DAL.Concrete.Repository.EntityFramework;
+﻿using BLL.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,7 +10,12 @@ namespace CoreDemo.Controllers
 {
     public class NewsLatterController : Controller
     {
-        NewsLetterManager newsLetterManager = new NewsLetterManager(new EfNewsLetterRepository());
+        INewsLetterService newsLetterService;
+
+        public NewsLatterController(INewsLetterService newsLetter)
+        {
+            newsLetterService = newsLetter;
+        }
 
 
         //Mail bülteni abone olma kısmı
@@ -24,7 +28,7 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public PartialViewResult SubscribeMail(NewsLetter newsLetter)
         {
-            newsLetterManager.Add(newsLetter);
+            newsLetterService.Insert(newsLetter);
             return PartialView();
         }
     }

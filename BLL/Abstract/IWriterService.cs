@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-   public interface IWriterService
+   public interface IWriterService : IGenericBLL<Writer>
     {
-
-        void Insert(Writer writer);
-
 
     }
 }

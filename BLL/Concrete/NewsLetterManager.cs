@@ -18,10 +18,32 @@ namespace BLL.Concrete
             this.newsLetterDAL = newsLetterDAL;
         }
 
-        public void Add(NewsLetter newsLetter)
+        public void Insert(NewsLetter newsLetter)
         {
             newsLetter.MailStatus = true;
             newsLetterDAL.GetListAll();
         }
+
+        public void Update(NewsLetter entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(NewsLetter entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public NewsLetter GetById(int blogId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<NewsLetter> GetList()
+        {
+            throw new NotImplementedException();
+        }
+
+    
     }
 }

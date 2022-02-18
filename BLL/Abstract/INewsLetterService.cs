@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-    interface INewsLetterService
+   public interface INewsLetterService : IGenericBLL<NewsLetter>
     {
-
-        void Add(NewsLetter newsLetter);
 
     }
 }

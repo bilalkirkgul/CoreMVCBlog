@@ -19,7 +19,7 @@ namespace BLL.Concrete
             categoryDAL = category;
         }
 
-        public void Add(Category category)
+        public void Insert(Category category)
         {
             categoryDAL.Insert(category);
         }

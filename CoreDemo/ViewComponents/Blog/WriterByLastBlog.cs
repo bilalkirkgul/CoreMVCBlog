@@ -1,5 +1,4 @@
-﻿using BLL.Concrete;
-using DAL.Concrete.Repository.EntityFramework;
+﻿using BLL.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,11 +10,16 @@ namespace CoreDemo.ViewComponents.Blog
     public class WriterByLastBlog: ViewComponent
     {
 
-        BlogManager blogManager = new BlogManager(new EfBlogRepository());
+        IBlogService blogService;
+
+        public WriterByLastBlog(IBlogService blogService)
+        {
+            this.blogService = blogService;
+        }
 
         public IViewComponentResult Invoke(int writerId)
         {
-            var values = blogManager.GetBlogListByWriter(writerId);            
+            var values = blogService.GetBlogListByWriter(writerId);            
             return View(values);
         }
 

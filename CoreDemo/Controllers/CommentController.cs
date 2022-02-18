@@ -1,5 +1,4 @@
-﻿using BLL.Concrete;
-using DAL.Concrete.Repository.EntityFramework;
+﻿using BLL.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,9 +11,12 @@ namespace CoreDemo.Controllers
 {
     public class CommentController : Controller
     {
+        ICommentService commentService;
 
-
-        CommentManager cm = new CommentManager(new EfCommentRepository());
+        public CommentController(ICommentService comment)
+        {
+            commentService = comment;
+        }
 
         public IActionResult Index()
         {
@@ -31,7 +33,7 @@ namespace CoreDemo.Controllers
             comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             comment.CommentStatus = true;
             comment.BlogID = 1;
-            cm.Add(comment);
+            commentService.Insert(comment);
             return PartialView();
         }
         //public PartialViewResult CommentListByBlog(int id)

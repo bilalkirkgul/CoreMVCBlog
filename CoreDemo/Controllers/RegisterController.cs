@@ -1,6 +1,5 @@
-﻿using BLL.Concrete;
+﻿using BLL.Abstract;
 using BLL.ValidationRules;
-using DAL.Concrete.Repository.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
@@ -13,8 +12,13 @@ namespace CoreDemo.Controllers
 {
     public class RegisterController : Controller
     {
-        WriterManager writerBLL = new WriterManager(new EfWriterRepository());
+        
+        IWriterService writerService;
 
+        public RegisterController(IWriterService writerService)
+        {
+            this.writerService = writerService;
+        }
 
         public IActionResult Index()
         {
@@ -29,7 +33,7 @@ namespace CoreDemo.Controllers
 
             if (result.IsValid)
             {
-                writerBLL.Insert(p);
+                writerService.Insert(p);
                 return RedirectToAction("Index", "Blog");
             }
             else

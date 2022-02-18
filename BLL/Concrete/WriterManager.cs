@@ -17,12 +17,33 @@ namespace BLL.Concrete
         {
             this.writerDAL = writerDAL;
         }
-
         public void Insert(Writer writer)
         {
             writer.WriterStatus = true;
             writer.WriterAbout = "Deneme";
             //writerDAL.Insert(writer);
         }
+
+        public void Update(Writer entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Writer entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Writer GetById(int blogId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Writer> GetList()
+        {
+            throw new NotImplementedException();
+        }
+
+       
     }
 }

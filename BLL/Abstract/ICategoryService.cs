@@ -7,15 +7,8 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-   public interface ICategoryService
+   public interface ICategoryService : IGenericBLL<Category>
     {
-        void Add(Category category);
-        void Delete(Category category);
-        void Update( Category category);
-
-        List<Category> GetList();
-        Category GetById(int categoryId);
-
-
+       
     }
 }

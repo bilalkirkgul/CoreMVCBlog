@@ -7,15 +7,10 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-   public interface ICommentService
+   public interface ICommentService : IGenericBLL<Comment>
     {
-        void Add(Comment comment);
-        //void Delete(Comment comment);
-        //void Update(Comment comment);
+        public List<Comment> GetCommentByList(int id);
 
-        List<Comment> GetList();
-        //Comment GetById(int commentId);
 
-      
     }
 }

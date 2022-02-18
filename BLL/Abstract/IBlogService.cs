@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-   public interface IBlogService
-    {
-        void Insert(Blog blog);
-        void Delete(Blog blog);
-        void Update(Blog blog);
-        List<Blog> GetList();       
-        Blog GetById(int blogId);
+   public interface IBlogService : IGenericBLL<Blog>
+    {      
         List<Blog> GetBlogListCategory();
         List<Blog> GetBlogByIDList(int id);
 

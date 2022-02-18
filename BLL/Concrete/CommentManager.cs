@@ -17,32 +17,33 @@ namespace BLL.Concrete
             commentDAL = comment;
         }
 
-        public void Add(Comment comment)
+        public void Insert(Comment comment)
         {
             commentDAL.Insert(comment);
         }
-        //public void Delete(Comment comment)
-        //{
-        //    commentDAL.Delete(comment);
-        //}
-        //public void Update(Comment comment)
-        //{
-        //    commentDAL.Update(comment);
-        //}
+        public void Delete(Comment comment)
+        {
+            commentDAL.Delete(comment);
+        }
+        public void Update(Comment comment)
+        {
+            commentDAL.Update(comment);
+        }
 
         public List<Comment> GetList()
         {
             return commentDAL.GetListAll();
         }
-        //public Comment GetById(int commentId)
-        //{
-        //    return commentDAL.GetById(a => a.CommentID == commentId);
-        //}
-
-
-        public List<Comment> GetCommentByList(int blogId)
+        public Comment GetById(int commentId)
         {
-            return commentDAL.GetListAll(a => a.BlogID == blogId);
+            return commentDAL.GetById(a => a.CommentID == commentId);
+        }
+
+
+        public List<Comment> GetCommentByList(int id)
+        {
+            //blogIdsine göre yorumları listeleme
+            return commentDAL.GetListAll(a => a.BlogID == id);
         }
         
     }
