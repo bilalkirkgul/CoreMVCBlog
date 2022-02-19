@@ -10,22 +10,19 @@ namespace CoreDemo.Controllers
     public class AboutController : Controller
     {
         IAboutService aboutService;
-        IBlogService blogService;
+       
 
-        public AboutController(IAboutService aboutService, IBlogService blog)
+        public AboutController(IAboutService aboutService)
         {
-            this.aboutService = aboutService;
-            this.blogService = blog;
+            this.aboutService = aboutService;         
         }
 
        
 
         public IActionResult Index()
         {
-            var values = aboutService.GetList();
-            var values2 = blogService.GetList();
-            var tuple = (values,values2);
-            return View(tuple);
+            var values = aboutService.GetList();    
+            return View(values);
         }
 
         public PartialViewResult SocialMedyaAbout()
