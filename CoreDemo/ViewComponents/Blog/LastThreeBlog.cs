@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CoreDemo.ViewComponents.LastThreeBlog
+namespace CoreDemo.ViewComponents.Blog
 {
     public class LastThreeBlog: ViewComponent
     {
@@ -19,7 +19,7 @@ namespace CoreDemo.ViewComponents.LastThreeBlog
 
         public IViewComponentResult Invoke()
         {
-            var values = blogService.GetListBlogInWriter().OrderByDescending(a => a.BlogCreateDate).ThenBy(a=>a.BlogID).TakeLast(5);
+            var values = blogService.GetListBlogInWriter().OrderByDescending(a => a.BlogCreateDate).ThenBy(a=>a.BlogID).TakeLast(3);
             return View(values);
         }
 

@@ -14,6 +14,6 @@ namespace BLL.Abstract
 
         void Delete(TEntity entity);
         List<TEntity> GetList();
-        TEntity GetById(int blogId);
+        TEntity GetById(int entityId);
     }
 }

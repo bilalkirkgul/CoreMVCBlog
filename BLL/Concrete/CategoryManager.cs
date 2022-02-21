@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Concrete
 {
-  public  class CategoryManager : ICategoryService
+   class CategoryManager : ICategoryService
     {
         ICategoryDAL categoryDAL;
 
@@ -29,9 +29,9 @@ namespace BLL.Concrete
             categoryDAL.Delete(category);
         }
 
-        public Category GetById(int categoryId)
+        public Category GetById(int entityId)
         {
-            return categoryDAL.GetById(a=>a.CategoryID==categoryId);
+            return categoryDAL.Get(a=>a.CategoryID== entityId);
         }
 
         public List<Category> GetList()

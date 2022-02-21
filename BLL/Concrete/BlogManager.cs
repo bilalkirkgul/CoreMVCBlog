@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Concrete
 {
-    public class BlogManager : IBlogService
+     class BlogManager : IBlogService
     {
         IBlogDAL blogDAL;
         public BlogManager(IBlogDAL blog)
@@ -32,16 +32,16 @@ namespace BLL.Concrete
         {
             return blogDAL.GetListAll();
         }
-        public Blog GetById(int blogId)
+        public Blog GetById(int entityId)
         {
-            return blogDAL.GetById(a => a.BlogID == blogId);
+            return blogDAL.Get(a => a.BlogID == entityId);
         }
 
 
 
         public List<Blog> GetBlogListCategory()
         {
-            //dal catmanında includes işlemi yaptım
+            //dal katmanında includes işlemi yaptım
            return blogDAL.GetListWithCategory();
         }
         public List<Blog> GetBlogByIDList(int id)

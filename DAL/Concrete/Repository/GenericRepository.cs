@@ -21,7 +21,7 @@ namespace DAL.Concrete.Repository
         }
 
       
-        public TEntity GetById(Expression<Func<TEntity, bool>> filter)
+        public TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
             using var context = new BlogDbContext();
             return context.Set<TEntity>().Where(filter).SingleOrDefault();

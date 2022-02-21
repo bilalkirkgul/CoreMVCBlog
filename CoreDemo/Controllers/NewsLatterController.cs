@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
+
+    //Bu class partial olarak kullanıldı ileride değişecek. 
+
     public class NewsLatterController : Controller
     {
         INewsLetterService newsLetterService;

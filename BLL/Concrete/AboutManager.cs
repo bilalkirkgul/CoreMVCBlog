@@ -33,7 +33,7 @@ namespace BLL.Concrete
             throw new NotImplementedException();
         }
 
-        public About GetById(int blogId)
+        public About GetById(int entityId)
         {
             throw new NotImplementedException();
         }

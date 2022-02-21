@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Concrete
 {
-   public class WriterManager : IWriterService
+    class WriterManager : IWriterService
     {
         IWriterDAL writerDAL;
 
@@ -34,7 +34,7 @@ namespace BLL.Concrete
             throw new NotImplementedException();
         }
 
-        public Writer GetById(int blogId)
+        public Writer GetById(int entityId)
         {
             throw new NotImplementedException();
         }
@@ -43,7 +43,15 @@ namespace BLL.Concrete
         {
             throw new NotImplementedException();
         }
-
-       
+        /// <summary>
+        /// Login Auto.
+        /// </summary>
+        /// <param name="mail">WriterMail</param>
+        /// <param name="password">WriterPassword</param>
+        /// <returns></returns>
+        public Writer GetLoginCheck(string mail, string password)
+        {
+            return writerDAL.Get(x => x.WriterMail == mail && x.WriterPassword == password);
+        }
     }
 }

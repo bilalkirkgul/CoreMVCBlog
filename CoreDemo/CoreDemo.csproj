@@ -13,4 +13,8 @@
     <ProjectReference Include="..\BLL\BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewComponents\LastThreeBlog\" />
+  </ItemGroup>
+
 </Project>

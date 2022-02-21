@@ -1,4 +1,5 @@
 ﻿using BLL.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
+    [AllowAnonymous] // Startup da tanımladığımız bütün [Authorize] kısıtlamasını namespace seviyesinde burada geçersiz saydık..
     public class BlogController : Controller
     {
         //BlogManager bm = new BlogManager(new EfBlogRepository()); //dependencyInjection yaptım ve interfaceler aracılığıyla hareket ettim. dolayısıyla dal ef class newlemeye gerek kalmadı
@@ -17,7 +19,7 @@ namespace CoreDemo.Controllers
         {
             blogService = blog;
         }
-
+        /*[AllowAnonymous]*/ //Actionu kısıtlama dışında tuttum
         public IActionResult Index()
         {
             var values = blogService.GetBlogListCategory();

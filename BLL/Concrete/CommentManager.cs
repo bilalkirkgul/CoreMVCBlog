@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Concrete
 {
-    public class CommentManager : ICommentService
+     class CommentManager : ICommentService
     {
         ICommentDAL commentDAL;
         public CommentManager(ICommentDAL comment)
@@ -36,7 +36,7 @@ namespace BLL.Concrete
         }
         public Comment GetById(int commentId)
         {
-            return commentDAL.GetById(a => a.CommentID == commentId);
+            return commentDAL.Get(a => a.CommentID == commentId);
         }
 
 

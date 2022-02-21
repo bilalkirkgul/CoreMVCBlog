@@ -20,6 +20,7 @@ namespace BLL.Concrete.DependencyInjection
             services.AddScoped<INewsLetterService, NewsLetterManager>();
             services.AddScoped<IWriterService, WriterManager>();
             services.AddScoped<IAboutService, AboutManager>();
+            services.AddScoped<IContactService, ContactManager>();
         }
 
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Concrete
 {
-   public class NewsLetterManager : INewsLetterService
+    class NewsLetterManager : INewsLetterService
     {
         INewsLetterDAL newsLetterDAL;
 
@@ -34,7 +34,7 @@ namespace BLL.Concrete
             throw new NotImplementedException();
         }
 
-        public NewsLetter GetById(int blogId)
+        public NewsLetter GetById(int entityId)
         {
             throw new NotImplementedException();
         }

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-   public interface IWriterService : IGenericBLL<Writer>
+    public interface IContactService:IGenericBLL<Contact>
     {
-        Writer GetLoginCheck(string mail, string password);
+     
     }
 }
