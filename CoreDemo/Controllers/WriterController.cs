@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
-    [Authorize] //Namespace seviyesinde Controller ve action Görüntü yetkilendirmesi işlemi yaptık. 
+    [Authorize] //Namespace seviyesinde Controller ve actionlar için sisteme giriş istedik. aksi taktirde giriş yapamalar.
     public class WriterController : Controller
     {
         public IActionResult Index()

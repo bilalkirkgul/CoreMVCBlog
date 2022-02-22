@@ -51,8 +51,11 @@
 
                     <!--Sosyal Medya Bitiş-->
                     <!--Postlar buraya dökülecek take ile son 3 tane post gönderilecek aynı post footer partiala da gönderilecek-->
+                    <div class="tech-btm">
+                        <h4>Son Postlar</h4>
+                        @await Component.InvokeAsync("LastThreeBlog")
 
-                    @await Component.InvokeAsync("LastThreeBlog")
+                    </div>
 
                     <!--Postlar son-->
                 </div>

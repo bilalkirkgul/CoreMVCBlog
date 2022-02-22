@@ -29,35 +29,34 @@ namespace CoreDemo
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services) //yapýlandýrma servisi
         {      
-            services.AddControllersWithViews().AddFluentValidation();
-            services.AddTransient<IValidator, WriterValidator>(); //fluentvalidation
-            services.AddScobeBLL(); 
+            services.AddControllersWithViews().AddFluentValidation();//fluentvalidation kullanýma açtým
+            services.AddTransient<IValidator, WriterValidator>(); //bll katmanýnda olan fluentvalidation dahil edildi
+            services.AddScobeBLL(); //dependencyInjection prensibi için oluþturduðum method dahil edildi.
             //services.AddSession();
             services.AddMvc(config =>
             {
-                //Proje seviyesinde Authorize yaptýk..(bkz45) Rollere göre sayfalara geçilecek
+                //Proje seviyesinde Authorize yaptýk..(bkz45) Rollere ve yetkiye göre sayfalara reaksiyon gösterecek.
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
             
-            services.AddMvc();
+            services.AddMvc(); //tanýmlý methodu kullan..
             services.AddSession(options =>
             {
+                //kullanýcý bilgilerini saklama cookiesi oluþturuldu.
                 options.IdleTimeout = TimeSpan.FromSeconds(5);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
 
 
             });
-
-
             //kullanýcý yetkisi dýþýnda bir sayafaya gitmek istiyorsa ve bizde bunun önüne geçtiysek. kullanýcýya önce login ol yetki sýnýrýný göredlim dedim.
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(a => a.LoginPath = new PathString("/Login/Index"));
 
             //services.ConfigureApplicationCookie(options =>
             //{
 
-            //    //Cookie settings AddSession alternatif
+            //    //Cookie settings AddSession alternatif ileride deðiþtirebilirim
             //    options.Cookie.HttpOnly = true;
             //    options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
             //    options.LoginPath = "/Login/Index";
@@ -79,14 +78,13 @@ namespace CoreDemo
             }
             app.UseSession(); //Autantication iþlemleri yönlendirme ve cookie
 
-            //Durum sayfasý hata aldýðýmýzda yönlenecek.
+            //Durum sayfasý hata aldýðýmýzda yönlenecek. Proje içinde gelen sayfayý kullanmadým. kendim oluþturdum ve burada tanýmlamasýný yaptým.
             app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404", "?code={0}");
             app.UseHttpsRedirection();
-            app.UseStaticFiles(); //wwwroot
-            app.UseAuthentication();
+            app.UseStaticFiles(); //wwwroot ve static dosyalarý aktif etmek için tanýmlanýr.          
             app.UseRouting(); //route url         
-            app.UseAuthentication();//yetkili olduðumuzu takip eder..
-            app.UseAuthorization();//Admin Areas  [Authorize] yetkilendir gibi iþlemler için kullanýlýr.
+            app.UseAuthentication();//yetkili olduðumuzu ve yetkimize göre sayfalara gitmemizi saðlar. 
+            app.UseAuthorization();//Admin Areas Authorize] yetkilendir gibi iþlemler için controllerde vermiþ olduðumuz yetkilendirme iþlemlerini takip eder.
 
             app.UseEndpoints(endpoints =>
             {
