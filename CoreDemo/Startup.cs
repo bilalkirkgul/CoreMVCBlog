@@ -27,16 +27,16 @@ namespace CoreDemo
         }
 
         public IConfiguration Configuration { get; }
-        public void ConfigureServices(IServiceCollection services) //yapýlandýrma servisi
+        public void ConfigureServices(IServiceCollection services) //yapýlandýrma servisi (hizmetleri)
         {      
             services.AddControllersWithViews().AddFluentValidation();//fluentvalidation kullanýma açtým
             services.AddTransient<IValidator, WriterValidator>(); //bll katmanýnda olan fluentvalidation dahil edildi
-            services.AddScobeBLL(); //dependencyInjection prensibi için oluþturduðum method dahil edildi.
+            services.AddScobeBLL(); //BLL Katmanýnda dependencyInjection prensibi için oluþturduðum method dahil edildi.
             //services.AddSession();
             services.AddMvc(config =>
             {
-                //Proje seviyesinde Authorize yaptýk..(bkz45) Rollere ve yetkiye göre sayfalara reaksiyon gösterecek.
-                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                //Proje seviyesinde zorunlu Authorize yaptýk..(bkz45) Rollere ve yetkiye göre sayfalara reaksiyon gösterecek.
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build(); //kullanýcýnýn sisteme otantication olmasýný inþaa ettim..
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
             
@@ -76,15 +76,15 @@ namespace CoreDemo
                 app.UseExceptionHandler("/Home/Error");              
                 app.UseHsts();
             }
-            app.UseSession(); //Autantication iþlemleri yönlendirme ve cookie
+            app.UseSession(); //Autantication iþlemleri yönlendirme ve cookie kullan..
 
-            //Durum sayfasý hata aldýðýmýzda yönlenecek. Proje içinde gelen sayfayý kullanmadým. kendim oluþturdum ve burada tanýmlamasýný yaptým.
+            //Durum sayfasý hata aldýðýmýzda yönlenecek sayfa tanýmlamasý. Proje içinde gelen sayfayý kullanmayarak kendi oluþturðum hata sayfasýnýn tanýmlamasýný ve yolunu burada yaptým..
             app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404", "?code={0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles(); //wwwroot ve static dosyalarý aktif etmek için tanýmlanýr.          
             app.UseRouting(); //route url         
-            app.UseAuthentication();//yetkili olduðumuzu ve yetkimize göre sayfalara gitmemizi saðlar. 
-            app.UseAuthorization();//Admin Areas Authorize] yetkilendir gibi iþlemler için controllerde vermiþ olduðumuz yetkilendirme iþlemlerini takip eder.
+            app.UseAuthentication();//yetkili olduðumuzu ve yetkilerimize göre sayfalara gitmemizi saðlar. 
+            app.UseAuthorization();//Admin Areas [Authorize] yetkilendir gibi iþlemler için controllerde vermiþ olduðumuz yetkilendirme iþlemlerini takip eder.
 
             app.UseEndpoints(endpoints =>
             {

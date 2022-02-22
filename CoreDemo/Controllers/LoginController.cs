@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
-    [AllowAnonymous]
+    [AllowAnonymous] //proje seviyesinde tanımlanan bütün kurallardan muaf olmak için kullandım
     public class LoginController : Controller
     {
         IWriterService writerService;
