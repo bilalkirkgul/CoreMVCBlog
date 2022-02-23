@@ -46,11 +46,10 @@ namespace CoreDemo
                 //kullanýcý bilgilerini saklama cookiesi oluþturuldu.
                 options.IdleTimeout = TimeSpan.FromSeconds(5);
                 options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-
+                options.Cookie.IsEssential = true;                
 
             });
-            //kullanýcý yetkisi dýþýnda bir sayafaya gitmek istiyorsa ve bizde bunun önüne geçtiysek. kullanýcýya önce login ol yetki sýnýrýný göredlim dedim.
+            //Proje seviyesinde kullanýcý yetkisi dýþýnda bir sayafaya gitmek istiyorsa ve bizde bunun önüne geçtiysek. kullanýcýya önce login ol yetki sýnýrýný göredlim dedim.
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(a => a.LoginPath = new PathString("/Login/Index"));
 
             //services.ConfigureApplicationCookie(options =>
@@ -83,7 +82,7 @@ namespace CoreDemo
             app.UseHttpsRedirection();
             app.UseStaticFiles(); //wwwroot ve static dosyalarý aktif etmek için tanýmlanýr.          
             app.UseRouting(); //route url         
-            app.UseAuthentication();//yetkili olduðumuzu ve yetkilerimize göre sayfalara gitmemizi saðlar. 
+            app.UseAuthentication();//Authentica olmamýmýzý saðlar. (login-register) controlleraction 
             app.UseAuthorization();//Admin Areas [Authorize] yetkilendir gibi iþlemler için controllerde vermiþ olduðumuz yetkilendirme iþlemlerini takip eder.
 
             app.UseEndpoints(endpoints =>

@@ -43,6 +43,8 @@ namespace BLL.Concrete
         {
             throw new NotImplementedException();
         }
+      
+        
         /// <summary>
         /// Login Auto.
         /// </summary>

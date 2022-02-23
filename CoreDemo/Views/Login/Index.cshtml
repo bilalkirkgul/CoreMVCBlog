@@ -12,6 +12,12 @@
         <h3 class="tittle">Oturum Aç</h3>
         <div class="row inner-sec">
             <div class="login p-5 bg-light mx-auto mw-100">
+                <div class="alert-danger">
+                    @if (ViewBag.Message!=null)
+                    {
+                        <span class="alert-danger">@ViewBag.Message</span>
+                    }
+                </div>
                 <form asp-controller="Login" asp-action="Index" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1 mb-2">Email Adresiniz</label>

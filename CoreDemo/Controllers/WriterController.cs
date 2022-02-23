@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
-    [Authorize] //Namespace seviyesinde Controller ve actionlar için sisteme giriş için yetki sınırlandırması yaptık. writer olamayan buraya giremeyecek..
+    /*[Authorize]*/ //Namespace seviyesinde Controller ve actionlar için sisteme giriş için yetki sınırlandırması yaptık. writer olamayan buraya giremeyecek..
     // app.UseAuthentication() kontrolü sağlandığında buraya giriş yapabiliriz..
+    [AllowAnonymous]
     public class WriterController : Controller
     {
         public IActionResult Index()

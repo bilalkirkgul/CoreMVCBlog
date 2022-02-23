@@ -41,7 +41,7 @@ namespace BLL.Concrete
 
         public List<Blog> GetBlogListCategory()
         {
-            //dal katmanında includes işlemi yaptım
+            //dal katmanında includes işlemi yaptım blog bilgilerini çağırırken içerisine category tüm bilgilerinide dahil ettim.
            return blogDAL.GetListWithCategory();
         }
         public List<Blog> GetBlogByIDList(int id)
@@ -61,7 +61,7 @@ namespace BLL.Concrete
 
         public List<Blog> GetListBlogInWriter()
         {
-            //blokların yazar bilgilerini çekmek için oluşturuldu. dal da tanımlama yapıldı
+            //dal katmanında includes işlemi yaptım blog bilgilerini çağırırken içerisine writerin tüm bilgilerinide dahil ettim.
             return blogDAL.GetListBlogInWriter();
         }
     }
