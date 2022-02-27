@@ -20,7 +20,7 @@ namespace CoreDemo.Controllers
 
         public BlogController(IBlogService blog)
         {
-            blogService = blog;
+            this.blogService = blog;
         }
         /*[AllowAnonymous]*/ //Actionu kısıtlama dışında tuttum
         public IActionResult Index()
@@ -58,7 +58,7 @@ namespace CoreDemo.Controllers
             if (validations.IsValid)
             {
                 blog.WriterID = 3;
-                blogService.Insert(blog);
+                //blogService.Insert(blog);
                 return RedirectToAction("Index", "Blog");
             }
             else
