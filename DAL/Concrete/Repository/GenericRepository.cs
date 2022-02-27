@@ -10,17 +10,13 @@ namespace DAL.Concrete.Repository
 {
     public class GenericRepository<TEntity> : IGenericDAL<TEntity> where TEntity : class
     {
-
-     
-
         public void Delete(TEntity entitiy)
         {
             using var context = new BlogDbContext();
             context.Remove(entitiy);
             context.SaveChanges();
         }
-
-      
+     
         public TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
             using var context = new BlogDbContext();
@@ -32,14 +28,6 @@ namespace DAL.Concrete.Repository
             using var context = new BlogDbContext();
             return filter==null? context.Set<TEntity>().ToList(): context.Set<TEntity>().Where(filter).ToList();
         }
-        
-        //public List<TEntity> GetListAll()
-        //{
-        //    using var context = new BlogDbContext();
-        //    return context.Set<TEntity>().ToList();
-        //}
-
-
         public void Insert(TEntity entitiy)
         {
             using var context = new BlogDbContext();

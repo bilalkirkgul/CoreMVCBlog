@@ -16,7 +16,8 @@ namespace BLL.ValidationRules
             RuleFor(a => a.WriterMail).NotEmpty().WithMessage("Mail Adresi alanı boş geçilemez");
             RuleFor(a => a.WriterPassword).NotEmpty().WithMessage("Şifre alanı boş geçilemez");
             RuleFor(a => a.WriterName).MinimumLength(2).WithMessage("En az 2 karakter girmelisiniz").MaximumLength(20).WithMessage("En fazla 20 karakter girebilirsiniz");
-        }
+
+       }
 
     }
 }

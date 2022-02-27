@@ -18,6 +18,8 @@ namespace BLL.Concrete
         }
         public void Insert(Blog blog)
         {
+            blog.BlogStatus = true;
+            blog.BlogCreateDate = DateTime.Now;
             blogDAL.Insert(blog);
         }
         public void Delete(Blog blog)
@@ -58,11 +60,22 @@ namespace BLL.Concrete
         {    //yazarın blokları     
             return blogDAL.GetListAll(a => a.WriterID == writerId).ToList();
         }
+        /// <summary>
+        /// Yazarın bloglarını listelerken kategori bilgilerinide çekme işlemi.
+        /// </summary>
+        /// <param name="writerId">YazarId</param>
+        /// <returns></returns>
+        public List<Blog> WriterBlogInCategoryByID(int writerId)
+        {
+            return blogDAL.WriterBlogInCategoryByID(writerId);
+        }
 
         public List<Blog> GetListBlogInWriter()
         {
             //dal katmanında includes işlemi yaptım blog bilgilerini çağırırken içerisine writerin tüm bilgilerinide dahil ettim.
             return blogDAL.GetListBlogInWriter();
         }
+
+        
     }
 }
