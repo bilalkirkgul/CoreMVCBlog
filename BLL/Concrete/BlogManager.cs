@@ -24,10 +24,13 @@ namespace BLL.Concrete
         }
         public void Delete(Blog blog)
         {
-            blogDAL.Delete(blog);
+            blog.BlogStatus = false;
+            blogDAL.Update(blog);
         }
         public void Update(Blog blog)
         {
+            blog.BlogStatus = true;
+            blog.BlogCreateDate = DateTime.Now;
             blogDAL.Update(blog);
         }
         public List<Blog> GetList()
@@ -65,9 +68,9 @@ namespace BLL.Concrete
         /// </summary>
         /// <param name="writerId">YazarId</param>
         /// <returns></returns>
-        public List<Blog> WriterBlogInCategoryByID(int writerId)
+        public List<Blog> GetListWithCategoryByWriter(int writerId)
         {
-            return blogDAL.WriterBlogInCategoryByID(writerId);
+            return blogDAL.GetListWithCategoryByWriter(writerId);
         }
 
         public List<Blog> GetListBlogInWriter()

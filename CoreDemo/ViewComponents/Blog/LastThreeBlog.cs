@@ -19,7 +19,7 @@ namespace CoreDemo.ViewComponents.Blog
 
         public IViewComponentResult Invoke()
         {
-            var values = blogService.GetListBlogInWriter().OrderByDescending(a => a.BlogCreateDate).ThenBy(a=>a.BlogID).TakeLast(3);
+            var values = blogService.GetListBlogInWriter().OrderByDescending(a => a.BlogID).Take(3);
             return View(values);
         }
 

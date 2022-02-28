@@ -1,16 +1,19 @@
-﻿@model Blog
+﻿
 @{
-    ViewData["Title"] = "AddBlog";
+    ViewData["Title"] = "UpdateBlog";
     Layout = "~/Views/Shared/WriterLayoutPartial/_WriterLayout.cshtml";
 }
+
+@model Blog
 
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
 
             <h2 class="card-description"> Blog Ekleme Paneli </h2>
-            <form asp-controller="Blog" asp-action="AddBlog" method="post" class="forms-sample">
+            <form asp-controller="Blog" asp-action="UpdateBlog" method="post" class="forms-sample">
                 <div class="form-group">
+                    <input type="hidden" asp-for="@Model.BlogID" />
                     <label for="exampleInputName1">Başlık</label>
                     <input type="text" asp-for="BlogTitle" class="form-control" id="exampleInputName1" placeholder="Başlık">
                     <span asp-validation-for="BlogTitle" class="alert-danger"></span>
@@ -18,30 +21,27 @@
 
                 <div class="form-group">
                     <label for="exampleSelectGender">Kategori</label>
-                    @*<select asp-for="CategoryID"  class="form-control" id="exampleSelectGender">
-
-                        </select>*@
                     @Html.DropDownListFor(a => a.CategoryID, ViewBag.Categories as IEnumerable<SelectListItem>, new { @class = "form-control" })
 
 
                 </div>
                 <div class="form-group">
-                    <label>Resim Yükle</label>
+                    <label>Resim Yükle (Küçük)</label>
                     <input type="file" name="BlogThumbnailImage" class="file-upload-default">
                     <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <input type="text" asp-for="BlogThumbnailImage" class="form-control file-upload-info" disabled>
                         <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Yükle</button>
                         </span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Resim Yükle</label>
+                    <label>Resim Yükle (Büyük)</label>
                     <input type="file" name="BlogImage" class="file-upload-default">
                     <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <input type="text" asp-for="BlogImage" class="form-control file-upload-info" disabled>
                         <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Yükle</button>
                         </span>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <textarea class="form-control" asp-for="BlogContent" id="exampleTextarea1" placeholder="Yazmak istediğiniz içeriği bu alana giriniz" rows="4"></textarea>
                     <span asp-validation-for="BlogContent" class="alert-danger"></span>
                 </div>
-                <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
+                <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
 
             </form>
         </div>

@@ -34,21 +34,33 @@
                         @foreach (Blog item in Model)
                         {
                             <tr>
-                                <td>@item.BlogID</td>
+                                <td><b>@item.BlogID</b></td>
                                 <td>@item.BlogTitle</td>
                                 <td>@item.BlogCreateDate.ToShortDateString()</td>
                                 <td>@item.Category.CategoryName</td>
-                                <td>@item.BlogStatus</td>
-                                <td><a href="" class="btn btn-outline-warning ml-sm-auto">Güncelle</a></td>
-                                <td><a href="" class="btn btn-outline-danger ml-sm-auto">Güncelle</a></td>
+                                @if (!item.BlogStatus)
+                                {
+                                    <td><span class="alert-danger">@item.BlogStatus</span></td>
+                                }
+                                else
+                                {
+                                    <td><span class="alert-info">@item.BlogStatus</span></td>
+                                }
+                                <td><a asp-controller="Blog" asp-action="UpdateBlog" asp-route-blogId="@item.BlogID" class="btn btn-outline-warning ml-sm-auto">Güncelle</a></td>
+                                @if (!item.BlogStatus)
+                                {
+                                    <td><a href="@Url.Action("DeleteBlog","Blog",new {blogId=item.BlogID })" class="btn btn-outline-danger disabled ml-sm-auto">Sil</a></td>
+                                }
+                                else
+                                {
+                                    <td><a href="@Url.Action("DeleteBlog","Blog",new {blogId=item.BlogID })" class="btn btn-outline-danger ml-sm-auto">Sil</a></td>
+                                }
                             </tr>
                         }
-
-
                     </tbody>
                 </table>
-                <a href="" class="btn btn-outline-primary ml-sm-auto">Yeni Blog Oluştur</a>
-            </div>
+                <a href="@Url.Action("AddBlog","Blog")" class="btn btn-outline-primary ml-sm-auto">Yeni Blog Oluştur</a>
+            </div>         
         </div>
     </div>
 

@@ -12,7 +12,7 @@ namespace DAL.Abstract
 
         List<Blog> GetListWithCategory();
         List<Blog> GetListBlogInWriter();
-        List<Blog> WriterBlogInCategoryByID(int writerId);
+        List<Blog> GetListWithCategoryByWriter(int writerId);
 
     }
 }

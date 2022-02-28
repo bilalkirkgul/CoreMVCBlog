@@ -22,7 +22,7 @@ namespace DAL.Concrete.Repository.EntityFramework
             using (var c = new BlogDbContext())
                 return c.Blogs.Include(a => a.Writer).ToList();
         }
-        public List<Blog> WriterBlogInCategoryByID(int writerId)
+        public List<Blog> GetListWithCategoryByWriter(int writerId)
         {
             using (var c = new BlogDbContext())
                 return c.Blogs.Include(a => a.Category).Where(a => a.WriterID == writerId).ToList();
