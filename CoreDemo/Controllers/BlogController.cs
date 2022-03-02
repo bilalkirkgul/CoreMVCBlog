@@ -41,6 +41,8 @@ namespace CoreDemo.Controllers
             var values = blogService.GetById(blogid);
             return View(values);
         }
+
+        //Todo: Bura da yazar Id numarasını manuel olarak verdim. sesiondan alınan ıd nuamrası veriledek..
         public IActionResult BlogListByWriter(int writerID)
         {
             var values = blogService.GetListWithCategoryByWriter(3);
@@ -72,6 +74,7 @@ namespace CoreDemo.Controllers
             FluentValidation.Results.ValidationResult validations = blogRudes.Validate(blog);
             if (validations.IsValid)
             {
+                //Todo: Bura da yazar Id numarasını manuel olarak verdim. sesiondan alınan ıd nuamrası veriledek..
                 blog.WriterID = 3;
                 //blogService.Insert(blog);
                 return RedirectToAction("Index", "Blog");
@@ -123,6 +126,7 @@ namespace CoreDemo.Controllers
             FluentValidation.Results.ValidationResult validations = blogRudes.Validate(blog);
             if (validations.IsValid)
             {
+                //Todo: Bura da yazar Id numarasını manuel olarak verdim. sesiondan alınan ıd nuamrası veriledek..
                 blog.WriterID = 3;
                 blogService.Update(blog);
                 return RedirectToAction("BlogListByWriter", "Blog");
