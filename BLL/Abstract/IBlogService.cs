@@ -9,7 +9,7 @@ namespace BLL.Abstract
 {
    public interface IBlogService : IGenericBLL<Blog>
     {      
-        List<Blog> GetBlogListCategory();
+        List<Blog> GetListBlogInCategory();
         List<Blog> GetBlogByIDList(int id);
         List<Blog> GetBlogListByWriter(int writerId);
         List<Blog> GetListBlogInWriter();

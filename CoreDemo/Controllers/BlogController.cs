@@ -27,7 +27,7 @@ namespace CoreDemo.Controllers
         /*[AllowAnonymous]*/ //Actionu kısıtlama dışında tuttum
         public IActionResult Index()
         {
-            var values = blogService.GetBlogListCategory();
+            var values = blogService.GetListBlogInCategory();
             return View(values);
         }
 
