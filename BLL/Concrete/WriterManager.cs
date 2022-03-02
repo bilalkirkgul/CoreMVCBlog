@@ -21,27 +21,28 @@ namespace BLL.Concrete
         {
             writer.WriterStatus = true;
             writer.WriterAbout = "Deneme";
-            //writerDAL.Insert(writer);
+            writerDAL.Insert(writer);
         }
 
         public void Update(Writer entity)
         {
-            throw new NotImplementedException();
+            writerDAL.Update(entity);
         }
 
         public void Delete(Writer entity)
         {
-            throw new NotImplementedException();
+            entity.WriterStatus = false;
+            writerDAL.Update(entity);
         }
 
         public Writer GetById(int entityId)
         {
-            throw new NotImplementedException();
+          return  writerDAL.Get(a=>a.WriterID==entityId);
         }
 
         public List<Writer> GetList()
         {
-            throw new NotImplementedException();
+            return writerDAL.GetListAll();
         }
       
         

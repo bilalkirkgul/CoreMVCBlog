@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,8 @@ namespace EntityLayer.Concrete
         public bool BlogStatus { get; set; }
 
         //bir blogun bir kategorisi olur
+
+        //[ForeignKey("Category")]
         public int CategoryID { get; set; }
         public Category Category { get; set; }
 

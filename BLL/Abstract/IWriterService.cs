@@ -10,5 +10,6 @@ namespace BLL.Abstract
    public interface IWriterService : IGenericBLL<Writer>
     {
         Writer GetLoginCheck(string mail, string password);
+        //List<Writer> GetWriterById(int writerId);
     }
 }

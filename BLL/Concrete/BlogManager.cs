@@ -29,7 +29,7 @@ namespace BLL.Concrete
         }
         public void Update(Blog blog)
         {
-            blog.BlogStatus = true;
+            //blog.BlogStatus = true;
             blog.BlogCreateDate = DateTime.Now;
             blogDAL.Update(blog);
         }
