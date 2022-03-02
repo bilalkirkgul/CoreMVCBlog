@@ -44,7 +44,7 @@ namespace BLL.Concrete
 
 
 
-        public List<Blog> GetBlogListCategory()
+        public List<Blog> GetListBlogInCategory()
         {
             //dal katmanında includes işlemi yaptım blog bilgilerini çağırırken içerisine category tüm bilgilerinide dahil ettim.
            return blogDAL.GetListWithCategory();
