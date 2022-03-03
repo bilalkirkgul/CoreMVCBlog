@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "EditProfile";
+    Layout = "~/Views/Shared/WriterLayoutPartial/_WriterLayout.cshtml";
+}
+
+
+@model Writer
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            <h2 class="card-description"> Yazar Profil Düzenleme Paneli </h2>
+            <form asp-controller="Writer" asp-action="WriterEditProfile" method="post" class="forms-sample">
+                <div class="form-group">
+                    <label for="exampleInputName1">İsim Soyisim</label>
+                    @Html.HiddenFor(a=>a.WriterID)
+                    <input type="text" asp-for="WriterName" class="form-control" id="exampleInputName1">
+                    <span asp-validation-for="WriterName" class="alert-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Mail</label>
+                    <input type="text" asp-for="WriterMail" class="form-control" id="exampleInputName1">
+                    <span asp-validation-for="WriterMail" class="alert-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Parola</label>
+                    <input type="text" asp-for="WriterPassword" class="form-control" id="exampleInputName1">
+                    <span asp-validation-for="WriterPassword" class="alert-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Yazar Resim Yükle</label>
+                    <input type="file" asp-for="WriterImg" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                        <input type="text" asp-for="WriterImg" class="form-control file-upload-info" disabled>
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Yükle</button>
+                        </span>
+                    </div>
+                </div>
+             
+                <div class="form-group">
+                    <label for="exampleTextarea1">Yazar Hakkında</label>
+                    <textarea class="form-control" id="exampleTextarea1" asp-for="WriterAbout" rows="4"></textarea>
+                    <span class="alert-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
