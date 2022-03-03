@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/WriterLayoutPartial/_WriterLayout.cshtml";
 }
 
+
 <div class="page-header">
     <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
@@ -20,7 +21,7 @@
                 <h4 class="font-weight-normal mb-3">
                     Toplam Blog Sayısı <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                 </h4>
-                <h2 class="mb-5">0</h2>
+                <h2 class="mb-5">@ViewBag.TotalBlog</h2>
 
             </div>
         </div>
@@ -32,7 +33,7 @@
                 <h4 class="font-weight-normal mb-3">
                     Sizin Blog Sayınız <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                 </h4>
-                <h2 class="mb-5">0</h2>
+                <h2 class="mb-5">@ViewBag.WriterTotalBlog</h2>
             </div>
         </div>
     </div>
@@ -41,9 +42,9 @@
             <div class="card-body">
                 <img src="~/WriterTema/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                 <h4 class="font-weight-normal mb-3">
-                    Son 7 Günlük Blog Sayısı <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                    Toplam Kategori Sayısı <i class="mdi mdi-diamond mdi-24px float-right"></i>
                 </h4>
-                <h2 class="mb-5">0</h2>
+                <h2 class="mb-5">@ViewBag.TotalCategories</h2>
             </div>
         </div>
     </div>

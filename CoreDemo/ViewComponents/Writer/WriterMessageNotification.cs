@@ -10,11 +10,11 @@ namespace CoreDemo.ViewComponents.Writer
     public class WriterMessageNotification : ViewComponent
     {
 
-        IWriterService writerService;
+        private readonly IWriterService writerService;
 
         public WriterMessageNotification(IWriterService writer)
         {
-            writerService = writer;
+           this.writerService = writer;
         }
 
 

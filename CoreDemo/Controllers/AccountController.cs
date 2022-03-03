@@ -50,7 +50,7 @@ namespace CoreDemo.Controllers
                     if (result.IsValid)
                     {
                         //writerService.Insert(writer);
-                        return RedirectToAction("Index", "Dashboard");
+                        return RedirectToAction("Index", "Writer");
                     }
                     else
                     {
@@ -94,15 +94,16 @@ namespace CoreDemo.Controllers
                 };
 
                 //burada Authentiontype bilgisi tutuluyor. string alana type bilgisi geçilebilinir. örneğin admin, writer vs vs.
-                var userIdentity = new ClaimsIdentity(claims, "a");
-                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(principal));
-                return RedirectToAction("Index", "Dashboard");
+                //var userIdentity = new ClaimsIdentity(claims, "a");
+                //ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
+                //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(principal));
+                //return RedirectToAction("Index", "Dashboard");
+
 
                 #region 2. alternatif yol
-                //ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-                //return RedirectToAction("Index", "Dashboard");
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));               
+                return RedirectToAction("Index", "Writer");
                 #endregion
 
             }

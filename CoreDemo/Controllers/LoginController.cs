@@ -36,21 +36,21 @@ namespace CoreDemo.Controllers
                 List<Claim> claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Name,dataValues.WriterMail),
-                    //new Claim(ClaimTypes.UserData,dataValues.WriterID.ToString()),
-                    //new Claim(ClaimTypes.NameIdentifier,dataValues.WriterName)
+                    new Claim(ClaimTypes.UserData,dataValues.WriterID.ToString()),
+                    new Claim(ClaimTypes.NameIdentifier,dataValues.WriterName)
 
                 };
 
                 //burada Authentiontype bilgisi tutuluyor. string alana type bilgisi geçilebilinir. örneğin admin, writer vs vs.
-                var userIdentity = new ClaimsIdentity(claims,"a");
-                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(principal));
-                return RedirectToAction("Index", "Writer");
+                //var userIdentity = new ClaimsIdentity(claims,"a");
+                //ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
+                //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(principal));
+                //return RedirectToAction("Index", "Writer");
 
                 #region 2. alternatif yol
-                //ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+                return RedirectToAction("Index", "Writer");
                 #endregion
 
             }

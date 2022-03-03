@@ -11,7 +11,7 @@ namespace CoreDemo.ViewComponents.Comment
 {
     public class CommentListByBlog : ViewComponent
     {
-        ICommentService commentService;
+       private readonly ICommentService commentService;
 
         public CommentListByBlog(ICommentService commentService)
         {

@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using BLL.Abstract;
+using CoreDemo.Models;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
@@ -12,9 +16,33 @@ namespace CoreDemo.Controllers
     [AllowAnonymous]
     public class WriterController : Controller
     {
+        private readonly IWriterService writerService;
+
+        public WriterController(IWriterService writerService)
+        {
+            this.writerService = writerService;
+        }
+      
         public IActionResult Index()
         {
-            return View();
+            int value = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
+            var dataValues = writerService.GetById(value);
+            return View(dataValues);
         }
+        public PartialViewResult WriterSlidebar()
+        {
+            int value = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
+            var dataValues = writerService.GetById(value);
+            return PartialView();
+        }
+
+        public PartialViewResult WriterNavbar()
+        {
+            int value = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
+            var dataValues = writerService.GetById(value);
+            return PartialView();
+        }
+
+
     }
 }

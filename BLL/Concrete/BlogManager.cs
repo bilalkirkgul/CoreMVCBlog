@@ -11,10 +11,10 @@ namespace BLL.Concrete
 {
      class BlogManager : IBlogService
     {
-        IBlogDAL blogDAL;
+       private readonly IBlogDAL blogDAL;
         public BlogManager(IBlogDAL blog)
         {
-            blogDAL = blog;
+            this.blogDAL = blog;
         }
         public void Insert(Blog blog)
         {
