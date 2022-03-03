@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<script src="~/lib/jquery/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+@model Writer
+<!--/main-->
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Yazar Kayıt Paneli</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                <form asp-controller="Account" asp-action="Register" method="post">
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">Adınız Soyadınız</label>
+                            <input name="UserName" type="text" class="form-control" placeholder="">
+                            <span asp-validation-for="WriterName" class="alert-danger"></span>
+
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom02">Mail Adresiniz</label>
+                            <input name="Email" type="email" class="form-control" for="validationCustom01" placeholder="">
+                            <span asp-validation-for="WriterMail" class="alert-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">Dosya Görsel Yolu</label>
+                            <input name="UserImg" type="text" class="form-control" placeholder="">
+                            <span asp-validation-for="@Model.WriterImg" class="alert-danger"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1 mb-2">Şifre</label>
+                            <input name="Password" type="password" class="form-control" placeholder="">
+                            <span asp-validation-for="WriterPassword" class="alert-danger"></span>
+                            @if (ViewBag.Message != null)
+                            {
+                                <span class="alert-danger">@ViewBag.Message</span>
+                            }
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword2 mb-2">Şifreyi Tekrar Giriniz</label>
+                            <input type="password" class="form-control" name="PasswordTwo" id="password2" placeholder="2 Şifreninde aynı olması gerekiyor">
+                            @if (ViewBag.Message != null)
+                            {
+                                <span class="alert-danger">@ViewBag.Message</span>
+                            }
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <p>
+                                <input href="#" type="checkbox" style="font-size:large" id="Swal" value=""><label for="validationCustom01">Tüm şartları okudum, Kabul ediyorum.</label>
+                            </p>
+                            <button style="margin-top:15px" type="submit" class="btn btn-primary submit mb-4 btn-block">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--//main-->
+<script>
+
+    $("#Swal").click(function () {
+        swal("Site Kabul Şartları", "KVKK kuralları gereği vs vs vs...", "success");
+
+    })
+</script>
+

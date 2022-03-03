@@ -13,11 +13,11 @@ namespace CoreDemo.Controllers
    
     public class CommentController : Controller
     {
-        ICommentService commentService;
+        private readonly ICommentService commentService;
 
         public CommentController(ICommentService comment)
         {
-            commentService = comment;
+            this.commentService = comment;
         }
 
         public IActionResult Index()

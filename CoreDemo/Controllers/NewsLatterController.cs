@@ -13,7 +13,7 @@ namespace CoreDemo.Controllers
 
     public class NewsLatterController : Controller
     {
-        INewsLetterService newsLetterService;
+        private readonly INewsLetterService newsLetterService;
 
         public NewsLatterController(INewsLetterService newsLetter)
         {

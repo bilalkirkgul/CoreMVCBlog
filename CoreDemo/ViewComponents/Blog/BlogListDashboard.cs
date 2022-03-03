@@ -10,14 +10,14 @@ namespace CoreDemo.ViewComponents.Blog
     public class BlogListDashboard : ViewComponent
     {
 
-        IBlogService blogService;
+        private readonly IBlogService blogService;
 
         public BlogListDashboard(IBlogService blog)
         {
             this.blogService = blog;
         }
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke() //Yazara genel son 10 blog listemelemesi.
         {
             var values = blogService.GetListBlogInCategory().OrderByDescending(a=>a.BlogCreateDate).Take(10);
             return View(values);

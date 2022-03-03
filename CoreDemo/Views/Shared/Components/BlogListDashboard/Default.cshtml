@@ -1,39 +1,43 @@
 ﻿
 
 @model IEnumerable<EntityLayer.Concrete.Blog>
+    <div class="card-body">
+        <h4 class="card-title">Son Bloglar</h4>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> Blog Resim </th>
+                        <th> Başlık </th>
+                        <th> Kategori </th>
+                        <th> Tarih </th>
+                        <th>  </th>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th> Blog Resim </th>
-            <th> Başlık </th>
-            <th> Kategori </th>
-            <th> Tarih </th>
-            <th>  </th>
+                    </tr>
+                </thead>
+                <tbody>
 
-        </tr>
-    </thead>
-    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img src="@item.BlogImage" class="mr-2" alt="image">
+                            </td>
+                            <td>
+                                @item.BlogTitle
+                            </td>
 
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>
-                <img src="@item.BlogImage" class="mr-2" alt="image">
-            </td>
-            <td>
-                @item.BlogTitle
-            </td>
+                            <td>
+                                <label class="badge badge-gradient-success">@item.Category.CategoryName</label>
+                            </td>
+                            <td> @item.BlogCreateDate.ToString("dd-MMM-yyyy") </td>
+                            <td> <a href="@Url.Action("BlogReadAll","Blog",new {blogid=item.BlogID })" class="btn btn-outline-primary">Detay</a></td>
 
-            <td>
-                <label class="badge badge-gradient-success">@item.Category.CategoryName</label>
-            </td>
-            <td> @item.BlogCreateDate.ToString("dd-MMM-yyyy") </td>
-            <td> <a href="@Url.Action("BlogReadAll","Blog",new {blogid=item.BlogID })" class="btn btn-outline-primary">Detay</a></td>
-
-        </tr>
-        }
+                        </tr>
+                    }
 
 
-    </tbody>
-</table>
+                </tbody>
+            </table>
+        </div>
+    </div>

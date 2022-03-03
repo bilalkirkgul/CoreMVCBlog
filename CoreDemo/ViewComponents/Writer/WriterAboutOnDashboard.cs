@@ -10,16 +10,16 @@ namespace CoreDemo.ViewComponents.Writer
     public class WriterAboutOnDashboard : ViewComponent
     {
 
-        IWriterService writerService;
+        private readonly IWriterService writerService;
         public WriterAboutOnDashboard(IWriterService writer)
         {
-            writerService = writer;
+           this.writerService = writer;
         }
 
         public IViewComponentResult Invoke(int writerID)
         {
-            //var values = writerService.GetById(writerID);
-            return View();
+            var values = writerService.GetById(3);
+            return View(values);
         }
 
 

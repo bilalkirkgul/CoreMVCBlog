@@ -10,16 +10,16 @@ namespace CoreDemo.ViewComponents.Blog
     public class LastThreeBlog: ViewComponent
     {
 
-        IBlogService blogService;
+        private readonly IBlogService blogService;
 
         public LastThreeBlog(IBlogService blog)
         {
             this.blogService = blog;
         }
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke() //Son 3 blog listeleme işlemi
         {
-            var values = blogService.GetListBlogInWriter().OrderByDescending(a => a.BlogID).Take(3);
+            var values = blogService.GetListBlogInWriter().OrderByDescending(a => a.BlogCreateDate).Take(3);
             return View(values);
         }
 

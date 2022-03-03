@@ -14,8 +14,8 @@ namespace CoreDemo.Controllers
     [AllowAnonymous]
     public class RegisterController : Controller
     {
-        
-        IWriterService writerService;
+
+        private readonly IWriterService writerService;
 
         public RegisterController(IWriterService writerService)
         {

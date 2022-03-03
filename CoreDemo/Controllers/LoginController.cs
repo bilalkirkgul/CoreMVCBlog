@@ -16,7 +16,7 @@ namespace CoreDemo.Controllers
     [AllowAnonymous] //proje seviyesinde tanımlanan bütün kurallardan muaf olmak için kullandım
     public class LoginController : Controller
     {
-        IWriterService writerService;
+        private readonly IWriterService writerService;
         public LoginController(IWriterService writer)
         {
             writerService = writer;

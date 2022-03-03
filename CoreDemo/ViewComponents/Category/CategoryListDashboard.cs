@@ -9,11 +9,11 @@ namespace CoreDemo.ViewComponents.Category
 {
     public class CategoryListDashboard: ViewComponent 
     {
-        ICategoryService categoryService;
+        private readonly ICategoryService categoryService;
 
         public CategoryListDashboard(ICategoryService category)
         {
-            categoryService = category;
+           this.categoryService = category;
         }
 
         public IViewComponentResult Invoke()

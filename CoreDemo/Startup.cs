@@ -51,7 +51,7 @@ namespace CoreDemo
 
             });
             //Proje seviyesinde kullanýcý yetkisi dýþýnda bir sayafaya gitmek istiyorsa ve bizde bunun önüne geçtiysek. kullanýcýya önce login ol yetki sýnýrýný göredlim dedim.
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(a => a.LoginPath = new PathString("/Login/Index"));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(a => a.LoginPath = new PathString("/Account/Login"));
 
             //services.ConfigureApplicationCookie(options =>
             //{
@@ -59,12 +59,12 @@ namespace CoreDemo
             //    //Cookie settings AddSession alternatif ileride deðiþtirebilirim
             //    options.Cookie.HttpOnly = true;
             //    options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
-            //    options.LoginPath = "/Login/Index";
+            //    options.LoginPath = "/Account/Login";
             //    options.SlidingExpiration = true;
             //});
 
         }
-      
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
@@ -33,7 +34,6 @@ namespace CoreDemo.Controllers
 
         public IActionResult BlogReadAll(int blogid)
         {
-
             #region id numarasına göre blog listeleme işlemi yaptım. getbyId ile değişecek
             //ViewBag.i = blogid; //gerek kalmadı
             //var values = bm.GetBlogByIDList(blogid); 
@@ -42,9 +42,12 @@ namespace CoreDemo.Controllers
             return View(values);
         }
 
+       
+        
         //Todo: Bura da yazar Id numarasını manuel olarak verdim. sesiondan alınan ıd nuamrası veriledek..
         public IActionResult BlogListByWriter(int writerID)
         {
+            //Yazarın Kendine ait bloglarının listelendiği sayfa
             var values = blogService.GetListWithCategoryByWriter(3);
             return View(values);
         }
@@ -141,5 +144,8 @@ namespace CoreDemo.Controllers
             }
             return View();
         }
+
+
+      
     }
 }

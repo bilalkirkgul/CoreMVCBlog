@@ -3,25 +3,20 @@
 <html lang="zxx">
 <head>
     <!--HeadPartial-->
-
     <partial name="_userHeadPartial" />
-
 </head>
 <body>
     <!--Header-->
     <header>
-        <partial name="_userHeaderLoginRegisterPartial" />
+        <partial name="_userHeaderAccountPartial" />
         <partial name="_userHeaderNavbar" />
-        @*@{ Html.RenderPartial("_userHeaderNavbar");}*@
+        @*@{ Html.RenderPartial("_userHeaderNavbar");}*@ @*Layout tarafında alternatif partial kullanımı*@
     </header>
     <!--//header-->
-    <!--banner-->
-    @*<partial name="_userHeaderbannerinner"/>*@
-    <!--banner end-->
+
     <div>
         @RenderBody()
     </div>
-
     <!--footer-->
     <!--alternatif olarak bunu yazdım-->
     @await Html.PartialAsync("_userFooterPartial")
@@ -30,6 +25,6 @@
     <!---->
     <!--ScriptsPartaial-->
     <partial name="_userScriptPartial" />
-
+    @RenderSection("scripts", false)
 </body>
 </html>

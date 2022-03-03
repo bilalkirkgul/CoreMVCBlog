@@ -11,7 +11,7 @@ namespace BLL.Concrete
 {
     class WriterManager : IWriterService
     {
-        IWriterDAL writerDAL;
+       private readonly IWriterDAL writerDAL;
 
         public WriterManager(IWriterDAL writerDAL)
         {
@@ -56,5 +56,7 @@ namespace BLL.Concrete
         {
             return writerDAL.Get(x => x.WriterMail == mail && x.WriterPassword == password);
         }
+
+       
     }
 }

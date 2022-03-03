@@ -14,15 +14,17 @@
         @await Html.PartialAsync("~/Views/Shared/WriterLayoutPartial/_writerNavbar.cshtml")
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
-            @await Html.PartialAsync("~/Views/Shared/WriterLayoutPartial/_slidebarWriter.cshtml")          
+            @await Html.PartialAsync("~/Views/Shared/WriterLayoutPartial/_slidebarWriter.cshtml")
             <div class="main-panel">
                 <div class="content-wrapper">
                     @RenderBody()
                 </div>
-                @await Html.PartialAsync("~/Views/Shared/WriterLayoutPartial/_writerFooterPartial.cshtml")            
-            </div>            
+                @await Html.PartialAsync("~/Views/Shared/WriterLayoutPartial/_writerFooterPartial.cshtml")
+            </div>
         </div>
     </div>
     @await Html.PartialAsync("~/Views/Shared/WriterLayoutPartial/_writerScriptPartial.cshtml")
+
+    @RenderSection("scripts", false)
 </body>
 </html>

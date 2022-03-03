@@ -12,7 +12,7 @@ namespace CoreDemo.ViewComponents.Category
     public class CategoryList: ViewComponent
     {
 
-        ICategoryService categoryService;
+        private readonly ICategoryService categoryService;
 
         public CategoryList(ICategoryService categoryService)
         {

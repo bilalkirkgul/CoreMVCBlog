@@ -12,7 +12,7 @@ namespace CoreDemo.Controllers
     [AllowAnonymous]
     public class ContactController : Controller
     {
-        IContactService contactService;
+       private readonly IContactService contactService;
 
         public ContactController(IContactService contactService)
         {
