@@ -46,7 +46,8 @@ namespace CoreDemo.Controllers
         public IActionResult BlogListByWriter(int writerID)
         {
             //Yazarın Kendine ait bloglarının listelendiği sayfa
-            var values = blogService.GetListWithCategoryByWriter(3);
+            int WriterID = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
+            var values = blogService.GetListWithCategoryByWriter(WriterID).ToList();
             return View(values);
         }
         public void GetListCategories()

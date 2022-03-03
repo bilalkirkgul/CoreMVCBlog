@@ -18,7 +18,7 @@ namespace CoreDemo.ViewComponents.Writer
 
         public IViewComponentResult Invoke(int writerID)
         {
-            var values = writerService.GetById(3);
+            var values = writerService.GetById(writerID);
             return View(values);
         }
 

@@ -12,11 +12,11 @@
 <body>
     <div class="container-scroller">
       
-        @Html.PartialAsync("~/Views/Writer/WriterNavbar.cshtml")
+        @await Html.PartialAsync("~/Views/Writer/WriterNavbar.cshtml")
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
          
-            @Html.PartialAsync("~/Views/Writer/WriterSlidebar.cshtml")
+            @await Html.PartialAsync("~/Views/Writer/WriterSlidebar.cshtml")
             <div class="main-panel">
                 <div class="content-wrapper">
                     @RenderBody()

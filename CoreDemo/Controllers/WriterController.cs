@@ -29,14 +29,14 @@ namespace CoreDemo.Controllers
             var dataValues = writerService.GetById(value);
             return View(dataValues);
         }
-        public PartialViewResult WriterSlidebar()
+        public IActionResult WriterSlidebar()
         {
             int value = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
             var dataValues = writerService.GetById(value);
             return PartialView();
         }
 
-        public PartialViewResult WriterNavbar()
+        public IActionResult WriterNavbar()
         {
             int value = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
             var dataValues = writerService.GetById(value);
