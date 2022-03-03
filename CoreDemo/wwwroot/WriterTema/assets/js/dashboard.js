@@ -3,9 +3,9 @@
   $(function() {
 
     // Remove pro banner on close
-    document.querySelector('#bannerClose').addEventListener('click',function() {
-      document.querySelector('#proBanner').classList.add('d-none');
-    });
+    //document.querySelector('#bannerClose').addEventListener('click',function() {
+    //  document.querySelector('#proBanner').classList.add('d-none');
+    //}); //hata veriyor diye yorum satýrýna alýndý
     
     Chart.defaults.global.legend.labels.usePointStyle = true;
     
