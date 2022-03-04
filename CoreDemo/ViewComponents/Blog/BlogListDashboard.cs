@@ -17,8 +17,9 @@ namespace CoreDemo.ViewComponents.Blog
             this.blogService = blog;
         }
 
-        public IViewComponentResult Invoke() //Yazara genel son 10 blog listemelemesi.
+        public IViewComponentResult Invoke() //Yazara kendine özel sayfasında genel son 10 blog listemelemesi.
         {
+            //Writer Dashboard sayfasında kullanıldı...
             var values = blogService.GetListBlogInCategory().OrderByDescending(a=>a.BlogCreateDate).Take(10);
             return View(values);
         }

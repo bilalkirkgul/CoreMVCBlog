@@ -58,8 +58,7 @@
                 </div>
                 @*}*@
 
-                <!--Bu alanda kullanıcıların yorumlarını görüyoruz-->
-                @*@await Component.InvokeAsync("CommentListByBlog", new { id = ViewBag.i })*@
+                <!--Bu alanda kullanıcıların yorumlarını görüyoruz-->             
                 @await Component.InvokeAsync("CommentListByBlog", new { id = Model.BlogID })
                 <!---->
                 <!--Yorum oluşturma alanı-->

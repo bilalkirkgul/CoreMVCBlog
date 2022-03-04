@@ -27,7 +27,7 @@ namespace CoreDemo.Controllers
       
         public IActionResult Index()
         {
-            int value = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
+            int value = int.Parse(User.Identity.Name);
             var dataValues = writerService.GetById(value);
             return View(dataValues);
         }
@@ -35,7 +35,7 @@ namespace CoreDemo.Controllers
         [HttpGet]
         public IActionResult EditProfile()
         {
-            //int value = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
+            int value = int.Parse(User.Identity.Name);
             var dataValues = writerService.GetById(3);
             return View(dataValues);
         }
@@ -63,16 +63,16 @@ namespace CoreDemo.Controllers
             return View();
         }
 
-        public IActionResult WriterSlidebar()
+        public PartialViewResult WriterSlidebar()
         {
-            int value = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
+            int value = int.Parse(User.Identity.Name);
             var dataValues = writerService.GetById(value);
             return PartialView("WriterSlidebar",dataValues);
         }
 
-        public IActionResult WriterNavbar()
+        public PartialViewResult WriterNavbar()
         {
-            int value = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
+            int value = int.Parse(User.Identity.Name);
             var dataValues = writerService.GetById(value);
              return PartialView("WriterNavbar",dataValues);
         }

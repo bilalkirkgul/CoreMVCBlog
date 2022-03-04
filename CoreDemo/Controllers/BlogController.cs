@@ -27,26 +27,23 @@ namespace CoreDemo.Controllers
         }
         /*[AllowAnonymous]*/ //Actionu kısıtlama dışında tuttum
         public IActionResult Index()
-        {
+        {  
+            //Bloglar categori bilgileri ile birlikte sayfaya yükleniyor. Bunun için bll ve dal katmanlarında yapı oluşturdum. dalda Includes işlemi yaptım..
             var values = blogService.GetListBlogInCategory();
             return View(values);
         }
 
         public IActionResult BlogReadAll(int blogid)
-        {
-            #region id numarasına göre blog listeleme işlemi yaptım. getbyId ile değişecek
-            //ViewBag.i = blogid; //gerek kalmadı
-            //var values = bm.GetBlogByIDList(blogid); 
-            #endregion
+        {   //parametre Blog indexden gelmektedir.                
             var values = blogService.GetById(blogid);
             return View(values);
         }
 
              
-        public IActionResult BlogListByWriter(int writerID)
+        public IActionResult BlogListByWriter()
         {
             //Yazarın Kendine ait bloglarının listelendiği sayfa
-            int WriterID = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
+            int WriterID = int.Parse(User.Identity.Name);
             var values = blogService.GetListWithCategoryByWriter(WriterID).ToList();
             return View(values);
         }
@@ -75,13 +72,10 @@ namespace CoreDemo.Controllers
             BlogValidator blogRudes = new BlogValidator();
             FluentValidation.Results.ValidationResult validations = blogRudes.Validate(blog);
             if (validations.IsValid)
-            {
-              
-
-                blog.WriterID = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
-                //blog.WriterID = 3;
-                //blogService.Insert(blog);
-                return RedirectToAction("Index", "Blog");
+            {              
+                blog.WriterID = int.Parse(User.Identity.Name);
+                blogService.Insert(blog);
+                return RedirectToAction("BlogListByWriter", "Blog");
             }
             else
             {
@@ -130,8 +124,7 @@ namespace CoreDemo.Controllers
             FluentValidation.Results.ValidationResult validations = blogRudes.Validate(blog);
             if (validations.IsValid)
             {             
-                blog.WriterID = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
-                //blog.WriterID = 3;
+                blog.WriterID = int.Parse(User.Identity.Name);                
                 blogService.Update(blog);
                 return RedirectToAction("BlogListByWriter", "Blog");
             }

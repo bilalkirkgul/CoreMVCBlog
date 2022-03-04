@@ -19,6 +19,7 @@ namespace CoreDemo.ViewComponents.Blog
 
         public IViewComponentResult Invoke(int writerId) // yazarın Blogları
         {
+            // blog BlogReadAll listeleme sayfasında kullanıldı..
             var values = blogService.GetBlogListByWriter(writerId);
             return View(values);
            

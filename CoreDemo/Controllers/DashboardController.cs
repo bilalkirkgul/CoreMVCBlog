@@ -28,7 +28,7 @@ namespace CoreDemo.Controllers
             ViewBag.TotalBlog = blogService.GetList().Count();
             ViewBag.WriterTotalBlog = blogService.GetBlogListByWriter(3).Count();
             ViewBag.TotalCategories = categoryService.GetList().Count();
-            //ViewBag.WriterId = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
+           //int value = int.Parse(User.FindFirstValue(ClaimTypes.UserData));
             return View();
         }
     }

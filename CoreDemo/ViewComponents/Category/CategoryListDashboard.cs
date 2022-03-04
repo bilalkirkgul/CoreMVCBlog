@@ -18,6 +18,7 @@ namespace CoreDemo.ViewComponents.Category
 
         public IViewComponentResult Invoke()
         {
+            //Dashbord Index sayfasında kullanıldı..
             var values = categoryService.GetList();
             return View(values);
         }

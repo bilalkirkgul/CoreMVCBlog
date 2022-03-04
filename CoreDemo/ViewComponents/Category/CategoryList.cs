@@ -21,9 +21,8 @@ namespace CoreDemo.ViewComponents.Category
 
         public IViewComponentResult Invoke()
         {
-            //select CategoryID,Count(*) [Toplam Blog Yazısı] from Blogs Group by CategoryID Order by 2 desc 
-
-            //var values = categoryService.GetList().ToList();
+            //Kategorilerin kaçar tane blogları var onu öğrenmek için bll ve dal da method oluşturuldu.
+            //blog BlogReadAll listeleme sayfasında kullanıldı..
             var values = categoryService.GetListCategoryBlogCountList().ToList();
             return View(values);
         }

@@ -20,6 +20,7 @@ namespace CoreDemo.ViewComponents.Writer
 
         public IViewComponentResult Invoke()
         {
+            //Writer Tema navbar
             return View();
         }
 

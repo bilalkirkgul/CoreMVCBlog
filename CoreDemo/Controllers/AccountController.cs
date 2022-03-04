@@ -49,7 +49,7 @@ namespace CoreDemo.Controllers
                     ValidationResult result = wrudes.Validate(writer);
                     if (result.IsValid)
                     {
-                        //writerService.Insert(writer);
+                        writerService.Insert(writer);
                         return RedirectToAction("Index", "Writer");
                     }
                     else
@@ -87,9 +87,9 @@ namespace CoreDemo.Controllers
             {
                 List<Claim> claims = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.Name,loginWriter.WriterMail),
-                    new Claim(ClaimTypes.UserData,loginWriter.WriterID.ToString()),
-                    new Claim(ClaimTypes.NameIdentifier,loginWriter.WriterName)
+                    new Claim(ClaimTypes.Name,loginWriter.WriterID.ToString()),
+                    new Claim(ClaimTypes.UserData,loginWriter.WriterName.ToString()),
+                    new Claim(ClaimTypes.NameIdentifier,loginWriter.WriterMail)
 
                 };
 
@@ -102,8 +102,9 @@ namespace CoreDemo.Controllers
 
                 #region 2. alternatif yol
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));               
-                return RedirectToAction("Index", "Writer");
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity)); 
+               
+                return RedirectToAction("Index", "Dashboard");
                 #endregion
 
             }

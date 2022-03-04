@@ -17,8 +17,9 @@ namespace CoreDemo.ViewComponents.Blog
             this.blogService = blog;
         }
 
-        public IViewComponentResult Invoke() //Son 3 blog listeleme işlemi
+        public IViewComponentResult Invoke() //Son 3 blog listeleme işlemi 
         {
+            //footer ve blog BlogReadAll listeleme sayfalarında kullanıldı..
             var values = blogService.GetListBlogInWriter().OrderByDescending(a => a.BlogCreateDate).Take(3);
             return View(values);
         }

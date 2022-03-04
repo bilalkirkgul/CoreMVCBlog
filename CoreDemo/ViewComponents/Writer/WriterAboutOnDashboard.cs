@@ -16,9 +16,12 @@ namespace CoreDemo.ViewComponents.Writer
            this.writerService = writer;
         }
 
-        public IViewComponentResult Invoke(int writerID)
+        public IViewComponentResult Invoke()
         {
-            var values = writerService.GetById(writerID);
+
+            //Dashbord Index Sayfası yazar Hakkında kısmı
+           var writerId = int.Parse(User.Identity.Name);
+           var values = writerService.GetById(writerId);
             return View(values);
         }
 
