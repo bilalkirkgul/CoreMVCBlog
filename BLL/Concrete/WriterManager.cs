@@ -19,8 +19,6 @@ namespace BLL.Concrete
         }
         public void Insert(Writer writer)
         {
-            writer.WriterStatus = true;
-            writer.WriterAbout = "Deneme";
             writerDAL.Insert(writer);
         }
 
