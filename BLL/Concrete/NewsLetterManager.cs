@@ -11,7 +11,7 @@ namespace BLL.Concrete
 {
     class NewsLetterManager : INewsLetterService
     {
-        INewsLetterDAL newsLetterDAL;
+       private readonly INewsLetterDAL newsLetterDAL;
 
         public NewsLetterManager(INewsLetterDAL newsLetterDAL)
         {

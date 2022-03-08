@@ -21,6 +21,7 @@ namespace BLL.Concrete.DependencyInjection
             services.AddScoped<IWriterService, WriterManager>();
             services.AddScoped<IAboutService, AboutManager>();
             services.AddScoped<IContactService, ContactManager>();
+            services.AddScoped<INotificationService, NotificationManager>();
         }
 
 

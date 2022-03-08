@@ -12,7 +12,7 @@
         <div class="card-body">
 
             <h2 class="card-description"> Yazar Profil Düzenleme Paneli </h2>
-            <form asp-controller="Writer" asp-action="EditProfile" method="post" class="forms-sample">
+            <form asp-controller="Writer" asp-action="EditProfile" method="post" class="forms-sample" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="exampleInputName1">İsim Soyisim</label>
                     @Html.HiddenFor(a=>a.WriterID)

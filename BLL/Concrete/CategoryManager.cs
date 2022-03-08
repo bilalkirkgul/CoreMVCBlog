@@ -12,11 +12,11 @@ namespace BLL.Concrete
 {
    class CategoryManager : ICategoryService
     {
-        ICategoryDAL categoryDAL;
+        private readonly ICategoryDAL categoryDAL;
 
         public CategoryManager(ICategoryDAL category)
         {
-            categoryDAL = category;
+            this.categoryDAL = category;
         }
 
         public void Insert(Category category)

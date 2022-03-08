@@ -11,7 +11,7 @@ namespace BLL.Concrete
 {
     class ContactManager : IContactService
     {
-        IContactDAL contactDAL;
+        private readonly IContactDAL contactDAL;
 
         public ContactManager(IContactDAL contactDAL)
         {

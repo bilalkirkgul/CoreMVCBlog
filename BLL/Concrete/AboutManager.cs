@@ -12,7 +12,7 @@ namespace BLL.Concrete
     class AboutManager : IAboutService
     {
 
-        IAboutDAL aboutDAL;
+        private readonly IAboutDAL aboutDAL;
 
         public AboutManager(IAboutDAL aboutDAL)
         {

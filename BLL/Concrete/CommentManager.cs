@@ -11,10 +11,10 @@ namespace BLL.Concrete
 {
      class CommentManager : ICommentService
     {
-        ICommentDAL commentDAL;
+        private readonly ICommentDAL commentDAL;
         public CommentManager(ICommentDAL comment)
         {
-            commentDAL = comment;
+            this.commentDAL = comment;
         }
 
         public void Insert(Comment comment)
