@@ -99,7 +99,7 @@ namespace CoreDemo.Controllers
 
 
 
-
+        //Todo: WriterLayoutPartial içerisine taşınacak...
         public PartialViewResult WriterSlidebar()
         {
             int value = int.Parse(User.Identity.Name);

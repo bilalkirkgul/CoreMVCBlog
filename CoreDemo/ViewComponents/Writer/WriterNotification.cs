@@ -10,18 +10,17 @@ namespace CoreDemo.ViewComponents.Writer
     //yazar bildirimleri
     public class WriterNotification : ViewComponent
     {
-       private readonly IWriterService writerService;
+        INotificationService notificationService;
 
-        public WriterNotification(IWriterService writer)
+        public WriterNotification(INotificationService notification)
         {
-          this.writerService = writer;
+            notificationService = notification;
         }
-
 
         public IViewComponentResult Invoke()
         {
-            //Writer Tema navbar
-            return View();
+            var values = notificationService.GetList();
+            return View(values);
         }
     }
 }
