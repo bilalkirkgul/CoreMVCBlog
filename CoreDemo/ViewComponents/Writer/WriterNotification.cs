@@ -19,7 +19,7 @@ namespace CoreDemo.ViewComponents.Writer
 
         public IViewComponentResult Invoke()
         {
-            var values = notificationService.GetList();
+            var values = notificationService.GetListStatusTrue();
             return View(values);
         }
     }

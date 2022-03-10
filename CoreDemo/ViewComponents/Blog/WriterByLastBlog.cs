@@ -19,7 +19,7 @@ namespace CoreDemo.ViewComponents.Blog
 
         public IViewComponentResult Invoke(int writerId) // yazarın Blogları
         {
-            // blog BlogReadAll listeleme sayfasında kullanıldı..
+            // blog BlogReadAll listeleme sayfasında kullanıldı.. GetBlogListByWriter sadece status true olanları getiriyor.
             var values = blogService.GetBlogListByWriter(writerId);
             return View(values);
            

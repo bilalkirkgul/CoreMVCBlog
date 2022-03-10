@@ -29,12 +29,14 @@ namespace CoreDemo.Controllers
         public IActionResult Index()
         {  
             //Bloglar categori bilgileri ile birlikte sayfaya yükleniyor. Bunun için bll ve dal katmanlarında yapı oluşturdum. dalda Includes işlemi yaptım..
+            //Silinen, durumu false olan bloglar bura da gözükmemektedir.
             var values = blogService.GetListBlogInCategory();
             return View(values);
         }
 
         public IActionResult BlogReadAll(int blogid)
-        {   //parametre Blog indexden gelmektedir.                
+        {   //parametre Blog indexden gelmektedir.
+            //seçili bloğun detayı görme actionu 
             var values = blogService.GetById(blogid);
             return View(values);
         }
@@ -42,7 +44,9 @@ namespace CoreDemo.Controllers
              
         public IActionResult BlogListByWriter()
         {
+            //WriterTema Bölümü
             //Yazarın Kendine ait bloglarının listelendiği sayfa
+            //Bu bölümde durumu false olanlarda gözükmektedir.
             int WriterID = int.Parse(User.Identity.Name);
             var values = blogService.GetListWithCategoryByWriter(WriterID).ToList();
             return View(values);
@@ -89,19 +93,7 @@ namespace CoreDemo.Controllers
             return View();
         }
 
-        public IActionResult DeleteBlog(int? blogId)
-        {
-            if (blogId.HasValue)
-            {
-                Blog deleteBlog = blogService.GetById(blogId.Value);
-                blogService.Delete(deleteBlog);
-                return RedirectToAction("BlogListByWriter", "Blog");
-            }
-            else
-            {
-                return View();
-            }
-        }
+    
         [HttpGet]
         public IActionResult UpdateBlog(int? blogId)
         {
@@ -124,7 +116,8 @@ namespace CoreDemo.Controllers
             FluentValidation.Results.ValidationResult validations = blogRudes.Validate(blog);
             if (validations.IsValid)
             {             
-                blog.WriterID = int.Parse(User.Identity.Name);                
+                blog.WriterID = int.Parse(User.Identity.Name);
+                blog.BlogStatus = true;
                 blogService.Update(blog);
                 return RedirectToAction("BlogListByWriter", "Blog");
             }
@@ -138,8 +131,20 @@ namespace CoreDemo.Controllers
             }
             return View();
         }
+        public IActionResult DeleteBlog(int? blogId)
+        {
+            if (blogId.HasValue)
+            {
+                Blog deleteBlog = blogService.GetById(blogId.Value);
+                blogService.Delete(deleteBlog);
+                return RedirectToAction("BlogListByWriter", "Blog");
+            }
+            else
+            {
+                return View();
+            }
+        }
 
 
-      
     }
 }

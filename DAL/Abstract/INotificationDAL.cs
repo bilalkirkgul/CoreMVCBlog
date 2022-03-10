@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace DAL.Abstract
 {
    public interface INotificationDAL : IGenericDAL<Notification>
-    {
+    {       
     }
 }

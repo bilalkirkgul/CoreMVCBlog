@@ -9,5 +9,6 @@ namespace BLL.Abstract
 {
    public interface INotificationService : IGenericBLL<Notification>
     {
+        List<Notification> GetListStatusTrue();
     }
 }

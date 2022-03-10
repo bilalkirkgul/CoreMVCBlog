@@ -40,6 +40,9 @@ namespace BLL.Concrete
             return notificationDAL.GetListAll();
         }
 
-     
+        public List<Notification> GetListStatusTrue()
+        {
+            return notificationDAL.GetListAll(a=>a.NotificationStatus==true);
+        }
     }
 }

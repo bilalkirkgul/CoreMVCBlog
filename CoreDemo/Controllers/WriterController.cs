@@ -102,16 +102,18 @@ namespace CoreDemo.Controllers
         //Todo: WriterLayoutPartial içerisine taşınacak...
         public PartialViewResult WriterSlidebar()
         {
-            int value = int.Parse(User.Identity.Name);
-            var dataValues = writerService.GetById(value);
-            return PartialView("WriterSlidebar", dataValues);
+            //int value = int.Parse(User.Identity.Name);
+            //var dataValues = writerService.GetById(value);
+            //return PartialView("WriterSlidebar", dataValues);
+            return PartialView();
         }
 
         public PartialViewResult WriterNavbar()
         {
-            int value = int.Parse(User.Identity.Name);
-            var dataValues = writerService.GetById(value);
-            return PartialView("WriterNavbar", dataValues);
+            //int value = int.Parse(User.Identity.Name);
+            //var dataValues = writerService.GetById(value);
+            //return PartialView("WriterNavbar", dataValues);
+            return PartialView();
         }
 
 

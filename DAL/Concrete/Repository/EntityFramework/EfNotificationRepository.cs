@@ -10,5 +10,8 @@ namespace DAL.Concrete.Repository.EntityFramework
 {
     class EfNotificationRepository: GenericRepository<Notification>, INotificationDAL
     {
+
+      
+
     }
 }

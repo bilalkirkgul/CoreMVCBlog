@@ -14,18 +14,22 @@ namespace DAL.Concrete.Repository.EntityFramework
         public List<Blog> GetListWithCategory()
         {
             using (var c = new BlogDbContext())
-                return c.Blogs.Include(a => a.Category).ToList();
+                return c.Blogs.Where(a=>a.BlogStatus==true).Include(a => a.Category).ToList();
         }
 
         public List<Blog> GetListBlogInWriter()
         {
             using (var c = new BlogDbContext())
-                return c.Blogs.Include(a => a.Writer).ToList();
+                return c.Blogs.Where(a=>a.BlogStatus==true).Include(a => a.Writer).ToList();
         }
         public List<Blog> GetListWithCategoryByWriter(int writerId)
         {
+            //Yazarın Kendine ait bloglarının listelemek istediğinde kategorilerle birlikte databaseden çekme işlemi yaptığım method..
             using (var c = new BlogDbContext())
                 return c.Blogs.Include(a => a.Category).Where(a => a.WriterID == writerId).ToList();
         }
+
+      
+
     }
 }

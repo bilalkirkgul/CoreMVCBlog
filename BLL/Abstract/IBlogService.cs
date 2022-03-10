@@ -14,5 +14,6 @@ namespace BLL.Abstract
         List<Blog> GetBlogListByWriter(int writerId);
         List<Blog> GetListBlogInWriter();
         List<Blog> GetListWithCategoryByWriter(int writerId);
+        List<Blog> GetListStatusTrue();
     }
 }

@@ -21,11 +21,10 @@ namespace CoreDemo.Controllers
 
 
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public IActionResult Index()
-        {
-           
-            ViewBag.TotalBlog = blogService.GetList().Count();
+        {           
+            ViewBag.TotalBlog = blogService.GetListStatusTrue().Count();
             ViewBag.WriterTotalBlog = blogService.GetBlogListByWriter(3).Count();
             ViewBag.TotalCategories = categoryService.GetList().Count();
            //int value = int.Parse(User.FindFirstValue(ClaimTypes.UserData));

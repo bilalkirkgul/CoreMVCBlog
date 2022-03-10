@@ -28,8 +28,7 @@ namespace BLL.Concrete
             blogDAL.Update(blog);
         }
         public void Update(Blog blog)
-        {
-            //blog.BlogStatus = true;
+        {          
             blog.BlogCreateDate = DateTime.Now;
             blogDAL.Update(blog);
         }
@@ -79,6 +78,9 @@ namespace BLL.Concrete
             return blogDAL.GetListBlogInWriter();
         }
 
-        
+        public List<Blog> GetListStatusTrue()
+        {
+            return blogDAL.GetListAll(a=>a.BlogStatus==true);
+        }
     }
 }
