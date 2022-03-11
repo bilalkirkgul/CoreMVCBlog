@@ -89,7 +89,7 @@ namespace CoreDemo.Controllers
                 {
                     new Claim(ClaimTypes.Name,loginWriter.WriterID.ToString()),
                     new Claim(ClaimTypes.UserData,loginWriter.WriterName.ToString()),
-                    new Claim(ClaimTypes.NameIdentifier,loginWriter.WriterMail)
+                    new Claim(ClaimTypes.Email,loginWriter.WriterMail)
 
                 };
 

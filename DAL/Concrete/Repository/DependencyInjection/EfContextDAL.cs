@@ -21,6 +21,7 @@ namespace DAL.Concrete.Repository.DependencyInjection
             services.AddScoped<INewsLetterDAL, EfNewsLetterRepository>();
             services.AddScoped<IWriterDAL, EfWriterRepository>();
             services.AddScoped<INotificationDAL, EfNotificationRepository>();
+            services.AddScoped<IMessageDAL, EfMessageRepository>();
         }
     }
 }

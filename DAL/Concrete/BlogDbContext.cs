@@ -18,7 +18,7 @@ namespace DAL.Concrete
             base.OnConfiguring(optionsBuilder);
         }
 
-
+       
         public DbSet<About> Abouts { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -28,10 +28,23 @@ namespace DAL.Concrete
         public DbSet<NewsLetter> NewsLetters { get; set; }
         public DbSet<BlogRayting> BlogRaytings { get; set; }
         public DbSet<Notification> Notifications { get; set; }
-
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<MessageTwo> MessageTwos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
+        {      
+            modelBuilder.Entity<MessageTwo>()
+                .HasOne(a => a.SenderUser)
+                .WithMany(b => b.WriterSender)
+                .HasForeignKey(c => c.SenderID).OnDelete(DeleteBehavior.ClientSetNull);
+
+
+            modelBuilder.Entity<MessageTwo>()
+                .HasOne(a => a.ReceiverUser)
+                .WithMany(b => b.WriterReceiver)
+                .HasForeignKey(c => c.ReceiverID).OnDelete(DeleteBehavior.ClientSetNull);
+
+            //base.OnModelCreating(modelBuilder);
+     
         }
 
     }

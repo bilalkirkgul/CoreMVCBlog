@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "AllNotification";
+    Layout = "~/Views/Shared/WriterLayoutPartial/_WriterLayout.cshtml";
+}
+
+@model List<Notification>
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <code class="card-title" style="color:darkred"><b>Bildirimler</b></code>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Bildirim Başlığı</th>
+                            <th>Bidirim İçerik</th>
+                            <th>Oluşturulma Tarihi</th>
+
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Notification item in Model)
+                        {
+                            <tr>
+                                <td><b>@item.NotificationID</b></td>
+                                <td>@item.NotificationType</td>
+                                <td>@item.NotificationDetails</td>
+                                <td>@item.NotificationDate.ToShortDateString()</td>
+                             </tr>
+                        }
+                    </tbody>
+                </table>
+             
+            </div>
+        </div>
+    </div>
+
+</div>

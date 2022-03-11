@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CoreDemo.ViewComponents.Writer
@@ -10,18 +11,21 @@ namespace CoreDemo.ViewComponents.Writer
     public class WriterMessageNotification : ViewComponent
     {
 
-        private readonly IWriterService writerService;
+        private readonly IMessageService messageService;
 
-        public WriterMessageNotification(IWriterService writer)
+        public WriterMessageNotification(IMessageService message)
         {
-           this.writerService = writer;
+            this.messageService = message;
         }
-
 
         public IViewComponentResult Invoke()
         {
-            //Writer Tema navbar
-            return View();
+            //sesiondan gelen değer yakalanacak..
+            //kendine gelen mesajları görme işlemi
+            string p;
+            p = "alindoga@hotmail.com";           
+            var values = messageService.GetInboxListByWriter(p);
+            return View(values);
         }
 
     }
