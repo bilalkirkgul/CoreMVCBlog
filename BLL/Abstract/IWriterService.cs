@@ -9,6 +9,12 @@ namespace BLL.Abstract
 {
    public interface IWriterService : IGenericBLL<Writer>
     {
+        /// <summary>
+        /// Login Auto.
+        /// </summary>
+        /// <param name="mail">WriterMail</param>
+        /// <param name="password">WriterPassword</param>
+        /// <returns></returns>
         Writer GetLoginCheck(string mail, string password);
         
     }

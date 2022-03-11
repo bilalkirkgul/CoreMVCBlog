@@ -77,7 +77,10 @@ namespace BLL.Concrete
             //dal katmanında includes işlemi yaptım blog bilgilerini çağırırken içerisine writerin tüm bilgilerinide dahil ettim.
             return blogDAL.GetListBlogInWriter();
         }
-
+        /// <summary>
+        /// Status durumu True olan blogları listeleme için oluşturulan method
+        /// </summary>
+        /// <returns></returns>
         public List<Blog> GetListStatusTrue()
         {
             return blogDAL.GetListAll(a=>a.BlogStatus==true);

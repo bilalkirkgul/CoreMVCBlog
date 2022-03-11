@@ -9,6 +9,10 @@ namespace BLL.Abstract
 {
    public interface ICategoryService : IGenericBLL<Category>
     {
+        /// <summary>
+        /// Kategorinin kaç tane blogu var onu görmek için oluşturulmuş method
+        /// </summary>
+        /// <returns></returns>
         List<Category> GetListCategoryBlogCountList();
 
     }

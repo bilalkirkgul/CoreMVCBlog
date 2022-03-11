@@ -26,7 +26,7 @@ namespace DAL.Concrete.Repository.EntityFramework
         {
             //Yazarın Kendine ait bloglarının listelemek istediğinde kategorilerle birlikte databaseden çekme işlemi yaptığım method..
             using (var c = new BlogDbContext())
-                return c.Blogs.Include(a => a.Category).Where(a => a.WriterID == writerId).ToList();
+                return c.Blogs.Where(a=>a.WriterID==writerId).Include(a => a.Category).ToList();
         }
 
       

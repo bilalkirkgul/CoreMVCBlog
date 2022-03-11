@@ -43,7 +43,7 @@ namespace DAL.Concrete
                 .WithMany(b => b.WriterReceiver)
                 .HasForeignKey(c => c.ReceiverID).OnDelete(DeleteBehavior.ClientSetNull);
 
-            //base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
      
         }
 

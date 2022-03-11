@@ -28,16 +28,16 @@ namespace CoreDemo.Controllers
 
         public IActionResult Index()
         {
-            int value = int.Parse(User.Identity.Name);
-            var dataValues = writerService.GetById(value);
+            int userId = int.Parse(User.Identity.Name);
+            var dataValues = writerService.GetById(userId);
             return View(dataValues);
         }
 
         [HttpGet]
         public IActionResult EditProfile()
         {
-            int value = int.Parse(User.Identity.Name);
-            var dataValues = writerService.GetById(3);
+            int userId = int.Parse(User.Identity.Name);
+            var dataValues = writerService.GetById(userId);
             return View(dataValues);
         }
         [HttpPost]
@@ -60,7 +60,6 @@ namespace CoreDemo.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-
             return View();
         }
 
@@ -75,7 +74,6 @@ namespace CoreDemo.Controllers
         public IActionResult AddWriter(AddProfileImage addProfile)
         {
             Writer writer = new Writer();          
-
             if (addProfile.WriterImg != null)
             {
                 var extension = Path.GetExtension(addProfile.WriterImg.FileName);
@@ -91,13 +89,8 @@ namespace CoreDemo.Controllers
             writer.WriterStatus = true;
             writer.WriterAbout = addProfile.WriterAbout;
             writerService.Insert(writer);
-
-           
-
             return RedirectToAction("Index", "Dashboard");
         }
-
-
 
         //Todo: WriterLayoutPartial içerisine taşınacak...
         public PartialViewResult WriterSlidebar()
@@ -107,7 +100,6 @@ namespace CoreDemo.Controllers
             //return PartialView("WriterSlidebar", dataValues);
             return PartialView();
         }
-
         public PartialViewResult WriterNavbar()
         {
             //int value = int.Parse(User.Identity.Name);

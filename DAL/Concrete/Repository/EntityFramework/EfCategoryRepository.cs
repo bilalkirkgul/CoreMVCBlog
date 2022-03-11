@@ -15,7 +15,8 @@ namespace DAL.Concrete.Repository.EntityFramework
         public List<Category> GetListCategoryBlogCountList()
         {
             using (var c = new BlogDbContext())
-                return c.Categories.Include(a => a.Blogs).ToList();
+                return c.Categories.Include(a => a.Blogs.Where(a=>a.BlogStatus==true)).ToList();
+            
         }
 
     }

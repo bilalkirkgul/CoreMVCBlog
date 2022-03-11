@@ -44,12 +44,7 @@ namespace BLL.Concrete
         }
       
         
-        /// <summary>
-        /// Login Auto.
-        /// </summary>
-        /// <param name="mail">WriterMail</param>
-        /// <param name="password">WriterPassword</param>
-        /// <returns></returns>
+       
         public Writer GetLoginCheck(string mail, string password)
         {
             return writerDAL.Get(x => x.WriterMail == mail && x.WriterPassword == password);

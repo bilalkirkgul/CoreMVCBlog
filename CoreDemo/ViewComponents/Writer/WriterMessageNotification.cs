@@ -11,20 +11,21 @@ namespace CoreDemo.ViewComponents.Writer
     public class WriterMessageNotification : ViewComponent
     {
 
-        private readonly IMessageService messageService;
+        IMessageTwoService messageTwoService;
 
-        public WriterMessageNotification(IMessageService message)
+        public WriterMessageNotification(IMessageTwoService message)
         {
-            this.messageService = message;
+            this.messageTwoService = message;
         }
 
         public IViewComponentResult Invoke()
         {
-            //sesiondan gelen değer yakalanacak..
-            //kendine gelen mesajları görme işlemi
-            string p;
-            p = "alindoga@hotmail.com";           
-            var values = messageService.GetInboxListByWriter(p);
+            int userId = int.Parse(User.Identity.Name);      
+            var values = messageTwoService.GetInboxListReceiverByWriter(userId);
+
+            
+
+            ViewBag.MessageCount = values.Count();
             return View(values);
         }
 
