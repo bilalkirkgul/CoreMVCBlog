@@ -10,5 +10,6 @@ namespace DAL.Abstract
    public interface IMessageTwoDAL:IGenericDAL<MessageTwo>
     {
         List<MessageTwo> GetListMessageInReceiverWriter(int receiverId);
+        MessageTwo GetMessageInReceiverWriter(int messageId);
     }
 }

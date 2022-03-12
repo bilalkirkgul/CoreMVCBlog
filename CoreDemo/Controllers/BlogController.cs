@@ -16,7 +16,7 @@ namespace CoreDemo.Controllers
     [AllowAnonymous] // Startup da tanımladığımız bütün [Authorize] kısıtlamasını namespace seviyesinde burada geçersiz saydık..
     public class BlogController : Controller
     {
-        //BlogManager bm = new BlogManager(new EfBlogRepository()); //dependencyInjection yaptım ve interfaceler aracılığıyla hareket ettim. dolayısıyla dal ef class newlemeye gerek kalmadı
+        //BlogManager bm = new BlogManager(new EfBlogRepository()); //dependencyInjection yaptım ve interfaceler aracılığıyla hareket ettim. dolayısıyla dal ef class burada newlemeye gerek kalmadı
 
         private readonly IBlogService blogService;
         private readonly ICategoryService categoryService;

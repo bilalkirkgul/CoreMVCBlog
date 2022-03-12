@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/WriterLayoutPartial/_WriterLayout.cshtml";
+}
+
+@model MessageTwo
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            <h2 class="card-description"></h2>
+            <form class="forms-sample">
+                <div class="form-group">
+                    <label for="exampleInputName1">Mesajı Gönderen Kişi</label>  
+                    <input type="text" asp-for="SenderUser.WriterName" class="form-control" id="exampleInputName1">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="@Model.MessageID" />
+                    <label for="exampleInputName1">Mesaj Başlık</label>
+                    <input type="text" asp-for="MessageSubject" class="form-control" id="exampleInputName1">
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Mesaj Alındı Tarihi</label>
+                    <input type="datetime-local" asp-for="MessageDate" class="form-control" id="exampleInputName1">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleTextarea1">Mesaj Detayı</label>
+                    <textarea class="form-control" asp-for="MessageDetails" id="exampleTextarea1" rows="4"></textarea>
+                </div>
+                <a href="@Url.Action("InBox","Message")" class="btn btn-outline-primary ml-sm-auto">Mesaj Listesi</a>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- #region deneme -->
+@*<div class="col-md-12 d-flex align-items-stretch">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Mesaj Detay</h4>
+                        <p class="card-description"> Gönderen Kişi: <code></code>@Model.SenderUser.WriterName</p>
+                        <p class="card-description"> Mesaj Başlık : <code></code>@Model.MessageSubject</p>
+                        <p class="card-description"> Mesaj İçerik : <code></code>@Model.MessageDetails</p>
+
+                        <p class="font-weight-bold"> @Model.MessageDate.ToString("ddd-MMM-yyyy") </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>*@
+
+
+<!-- #endregion -->

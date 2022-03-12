@@ -15,5 +15,15 @@ namespace BLL.Abstract
         /// <param name="id">Sisteme giriş yapan kullanıcının parametresi veilecek</param>
         /// <returns></returns>
         List<MessageTwo> GetInboxListReceiverByWriter(int id);
+
+
+
+
+        /// <summary>
+        /// Mesajın detayını listeleme yaparken mesajı gönderen kişinin prifil bilgileri almak için oluşturulan method
+        /// </summary>
+        /// <param name="entityId">Mesajlar listesinden yakalayacağımız mesajın Id numarası</param>
+        /// <returns></returns>
+        MessageTwo GetByMessageIdAndSender(int id);
     }
 }

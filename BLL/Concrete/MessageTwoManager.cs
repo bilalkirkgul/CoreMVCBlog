@@ -34,8 +34,15 @@ namespace BLL.Concrete
 
         public MessageTwo GetById(int entityId)
         {
-            throw new NotImplementedException();
+            return messageTwoDAL.Get(a=>a.MessageID==entityId);
         }
+
+    
+        public List<MessageTwo> GetList()
+        {
+            return messageTwoDAL.GetListAll();
+        }
+
         /// <summary>
         ///Receiver "Alıcı" - ReceiverWriter seçili id' ye gönderilen mesajları listeleme işlemi. 
         /// </summary>
@@ -46,11 +53,18 @@ namespace BLL.Concrete
             return messageTwoDAL.GetListMessageInReceiverWriter(id);
         }
 
-        public List<MessageTwo> GetList()
+        /// <summary>
+        /// Mesaj detay listelemesi yaparken mesajı gönderen kişinin prifil bilgileri almak için oluşturulan method
+        /// </summary>
+        /// <param name="entityId">Mesajlar listesinden yakalayacağımız mesajın Id numarası</param>
+        /// <returns></returns>
+
+        public MessageTwo GetByMessageIdAndSender(int id)
         {
-            return messageTwoDAL.GetListAll();
+            return messageTwoDAL.GetMessageInReceiverWriter(id);
         }
 
-       
+
+
     }
 }
