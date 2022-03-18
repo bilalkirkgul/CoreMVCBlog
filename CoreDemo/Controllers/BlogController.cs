@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
-    [AllowAnonymous] // Startup da tanımladığımız bütün [Authorize] kısıtlamasını namespace seviyesinde burada geçersiz saydık..
+    /*[AllowAnonymous]*/ // Startup da tanımladığımız bütün [Authorize] kısıtlamasını namespace seviyesinde burada geçersiz saydık..
     public class BlogController : Controller
     {
         //BlogManager bm = new BlogManager(new EfBlogRepository()); //dependencyInjection yaptım ve interfaceler aracılığıyla hareket ettim. dolayısıyla dal ef class burada newlemeye gerek kalmadı
@@ -25,7 +25,7 @@ namespace CoreDemo.Controllers
             this.blogService = blog;
             this.categoryService = category;
         }
-        /*[AllowAnonymous]*/ //Actionu kısıtlama dışında tuttum
+        [AllowAnonymous] //Actionu kısıtlama dışında tuttum
         public IActionResult Index()
         {  
             //Bloglar categori bilgileri ile birlikte sayfaya yükleniyor. Bunun için bll ve dal katmanlarında yapı oluşturdum. dalda Includes işlemi yaptım..
@@ -33,7 +33,7 @@ namespace CoreDemo.Controllers
             var values = blogService.GetListBlogInCategory();
             return View(values);
         }
-
+        [AllowAnonymous]
         public IActionResult BlogReadAll(int blogid)
         {   //parametre Blog indexden gelmektedir.
             //seçili bloğun detayı görme actionu 

@@ -11,6 +11,7 @@ namespace DAL.Concrete.Repository.DependencyInjection
 {
    public static class EfContextDAL
     {
+        //Projede BLL Katmanından dal katmanına ulaşırken solide bağlı kalmak adına interfacelerle hareket edeceğimi belirtmiştim. x interface çağrıldığında ayağa kalkarken xRepository repositorisiyle birlikte ayağa kalkması için bu yapıyı oluşturdum. Bu yapı için Microsoft.Extensions.DependencyInjection kütüphanesi kullanılmıştır.
         public static void AddScobeDAL(this IServiceCollection services)
         {
             services.AddScoped<IAboutDAL, EfAboutRepository>();

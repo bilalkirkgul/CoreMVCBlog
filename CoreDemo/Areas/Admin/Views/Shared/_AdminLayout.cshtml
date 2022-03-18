@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    @*@Html.PartialAsync("_adminHeadPartial")*@
+    @*<partial name="_adminHeadPartial" />*@
+    @await Html.PartialAsync("~/Areas/Admin/Views/Shared/_adminHeadPartial.cshtml")
+</head>
+<body>
+    <div id="wrapper">
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/_adminNavbarPartial.cshtml")
+        <div id="page-wrapper" class="gray-bg">
+            @await Html.PartialAsync("~/Areas/Admin/Views/Shared/_adminNavbarTopPartial.cshtml")
+            <div class="wrapper wrapper-content animated fadeInRight">
+                @RenderBody()
+            </div>
+            <div class="footer">
+                <div class="float-right">
+                    10GB of <strong>250GB</strong> Free.
+                </div>
+                <div>
+                    <strong>Copyright</strong> Example Company &copy; 2014-2018
+                </div>
+            </div>
+        </div>
+    </div> 
+    @await Html.PartialAsync("~/Areas/Admin/Views/Shared/_adminScriptsPartial.cshtml")
+</body>
+</html>

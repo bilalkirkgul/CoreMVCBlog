@@ -12,6 +12,7 @@ namespace BLL.Concrete
 {
    class CategoryManager : ICategoryService
     {
+
         private readonly ICategoryDAL categoryDAL;
 
         public CategoryManager(ICategoryDAL category)
@@ -19,10 +20,29 @@ namespace BLL.Concrete
             this.categoryDAL = category;
         }
 
+        void CheckCategoryName(string categoryName)
+        {
+            var categories = categoryDAL.GetListAll();
+
+            foreach (var item in categories)
+            {
+                if (item.CategoryName==categoryName)
+                {
+                    throw new Exception("Kayıtlarımızda bu isim de bir kategori zaten mevcut");
+                }
+            }
+
+        }
         public void Insert(Category category)
         {
+            CheckCategoryName(category.CategoryName);
             categoryDAL.Insert(category);
         }
+        public void Update(Category category)
+        {
+            categoryDAL.Update(category);
+        }
+
 
         public void Delete(Category category)
         {
@@ -39,11 +59,7 @@ namespace BLL.Concrete
             return categoryDAL.GetListAll().ToList();
         }
        
-        public void Update(Category category)
-        {
-            categoryDAL.Update(category);    
-        }
-
+      
         public List<Category> GetListCategoryBlogCountList()
         {
             return categoryDAL.GetListCategoryBlogCountList();

@@ -9,7 +9,7 @@ namespace DAL.Abstract
 {
     public interface IGenericDAL<TEntity> where TEntity : class
     {
-        //GetAll işlemi ve get işlemi revize edilecek (Expression<Func<TEntity,bool>>filter) 
+     
         void Insert(TEntity entitiy);
         void Delete(TEntity entitiy);
         void Update(TEntity entitiy);

@@ -11,6 +11,9 @@ namespace BLL.Concrete.DependencyInjection
 {
    public static class EfContextBLL
     {
+
+        //UI Katmanında BLL interfaceleri kullanılırken bağlı olduğu xManager sınıfınıda beraberinde kullanmak için yapı oluşturuldu. ayrıca uı'da DAL kaltmanının repositorysini tekrar çağırmamamk için burada ki yapıya eklendi.
+
         public static void AddScobeBLL(this IServiceCollection services)
         {
             services.AddScobeDAL();

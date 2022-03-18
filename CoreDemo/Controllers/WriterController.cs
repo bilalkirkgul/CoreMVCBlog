@@ -16,10 +16,13 @@ namespace CoreDemo.Controllers
 {
     /*[Authorize]*/ //Namespace seviyesinde Controller ve actionlar için sisteme giriş için yetki sınırlandırması yaptık. writer olamayan buraya giremeyecek..
     // app.UseAuthentication() kontrolü sağlandığında buraya giriş yapabiliriz..
-    [AllowAnonymous]
+    //[AllowAnonymous]
     public class WriterController : Controller
     {
         private readonly IWriterService writerService;
+
+        //WriterManager wm=new WriterManager(EfwriterRepository());
+
 
         public WriterController(IWriterService writerService)
         {

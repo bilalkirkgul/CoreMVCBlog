@@ -8,25 +8,29 @@ using System.Threading.Tasks;
 
 namespace DAL.Concrete.Repository
 {
-    public class GenericRepository<TEntity> : IGenericDAL<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IGenericDAL<TEntity> 
+        where TEntity : class
     {
         public void Insert(TEntity entitiy)
         {
             using var context = new BlogDbContext();
-            context.Add(entitiy);
+            //context.Add(entitiy);
+            context.Entry(entitiy).State = Microsoft.EntityFrameworkCore.EntityState.Added;
             context.SaveChanges();
         }
 
         public void Update(TEntity entitiy)
         {
             using var context = new BlogDbContext();
-            context.Update(entitiy);
+            //context.Update(entitiy);
+            context.Entry(entitiy).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             context.SaveChanges();
         }
         public void Delete(TEntity entitiy)
         {
             using var context = new BlogDbContext();
-            context.Remove(entitiy);
+            //context.Remove(entitiy);
+            context.Entry(entitiy).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
             context.SaveChanges();
         }
      

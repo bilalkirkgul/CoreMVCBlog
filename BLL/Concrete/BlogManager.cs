@@ -1,5 +1,6 @@
 ﻿using BLL.Abstract;
 using DAL.Abstract;
+using DAL.Concrete.Repository.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,18 @@ namespace BLL.Concrete
 {
      class BlogManager : IBlogService
     {
-       private readonly IBlogDAL blogDAL;
+        //EfBlogRepository efBlogRepository;
+        //public BlogManager()
+        //{
+        //    efBlogRepository = new EfBlogRepository();
+        //}
+
+        //Yorum satırına alınan yapı sağlıksız bir yapıyı temsil eder. Burada alt sınıflara tam bağımlılık oluşmuş olur. solid D'si çiğnenmiş olur.
+        //DAL katmanında DependencyInjection klasörü içierisnde EfContextDAL classı oluşturdum. Bu yapıyı kurarken xInterface çağrıldığında beraberinde zaten ilgili olduğu xRepository clasınıda bağlamış olduğumdan xRepository iş sorumluluğunu buraya aktarmış oldum.
+
+
+        private readonly IBlogDAL blogDAL;
+
         public BlogManager(IBlogDAL blog)
         {
             this.blogDAL = blog;
