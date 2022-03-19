@@ -102,9 +102,20 @@ namespace CoreDemo.Controllers
 
                 #region 2. alternatif yol
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity)); 
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
+
+                if (loginWriter.WriterID==3)
+                {
+                    return RedirectToAction("Index", "Category",new { area = "Admin" });
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Dashboard");
+                }
+
                
-                return RedirectToAction("Index", "Dashboard");
+                
                 #endregion
 
             }

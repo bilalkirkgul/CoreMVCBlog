@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@model Category
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            <h2 class="card-description"> Kategori Ekleme Paneli </h2>
+            <form asp-area="Admin" asp-controller="Category" asp-action="AddCategory" method="post" class="forms-sample">
+                <div class="form-group">
+                    <label for="exampleInputName1">Kategori Adı</label>
+                    <input type="text" asp-for="CategoryName" class="form-control" id="exampleInputName1" placeholder="Kategori Başlık">
+                    <span asp-validation-for="CategoryName" class="alert-danger"></span>
+                </div>           
+                <div class="form-group">
+                    <label for="exampleTextarea1">Kategori Açıklama</label>
+                    <textarea class="form-control" asp-for="CategoryDescription" id="exampleTextarea1" placeholder="Yazmak istediğiniz kategori içeriğini bu alana giriniz" rows="4"></textarea>
+                    <span asp-validation-for="CategoryDescription" class="alert-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+

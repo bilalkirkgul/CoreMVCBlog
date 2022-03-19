@@ -4,5 +4,63 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
 
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Category>
+
+<div class="col-lg-8">
+    <div class="ibox ">
+        <div class="ibox-title">
+            <h5 class="align-self-md-center">Kategori Listesi  </h5>
+        </div>
+        <div class="ibox-content">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Kategori Adı</th>
+                        <th>Durumu</th>
+                        <th></th>
+                        <th></th>
+                        <th><a href="@Url.Action("AddCategory","Category","Admin")" class="btn btn-info btn-outline">Kategori Ekle</a></th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td><b>@item.CategoryID</b></td>
+                        <td>@item.CategoryName</td>
+                        <td>@item.CategoryStatus</td>
+
+                        @if (!item.CategoryStatus)
+                        {
+                            /*status false durumundan*/
+                            <td><a asp-area="Admin" asp-controller="Category" asp-action="StatusFalseCategory" asp-route-categoryId="@item.CategoryID" id="StatusFalse" onclick="return confirm('Silmek istediğinize emin misiniz ?');" class="btn btn-danger btn-outline disabled">Pasif Yap</a></td>
+                            <td><a asp-area="Admin" asp-controller="Category" asp-action="StatusTrueCategory" asp-route-categoryId="@item.CategoryID" id="StatusTrue" onclick="return confirm('Aktif etmek istediğinize emin misiniz ?');" class="btn btn-primary btn-outline">Aktif Yap</a></td>
+                        }
+                        else
+                        {
+                            <td><a asp-area="Admin" asp-controller="Category" asp-action="StatusFalseCategory" asp-route-categoryId="@item.CategoryID" id="DeleteBtn" onclick="return confirm('Silmek istediğinize emin misiniz ?');" class="btn btn-danger btn-outline">Pasif Yap</a></td>
+                            
+                            <td><a asp-area="Admin" asp-controller="Category" asp-action="StatusTrueCategory" asp-route-categoryId="@item.CategoryID" id="StatusTrue" onclick="return confirm('Aktif etmek istediğinize emin misiniz ?');" class="btn btn-primary btn-outline">Aktif Yap</a></td>
+                        }
+
+
+
+                        <td><a href="" class="btn btn-success btn-outline">Düzenle</a></td>
+
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+             <br />
+            @Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new { page}))
+        </div>
+    </div>
+</div>
