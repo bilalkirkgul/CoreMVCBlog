@@ -78,6 +78,7 @@ namespace CoreDemo.Controllers
             if (validations.IsValid)
             {              
                 blog.WriterID = int.Parse(User.Identity.Name);
+                //string mail = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Email).Value.ToString();
                 blogService.Insert(blog);
                 return RedirectToAction("BlogListByWriter", "Blog");
             }

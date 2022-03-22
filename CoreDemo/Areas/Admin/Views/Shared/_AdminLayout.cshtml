@@ -23,7 +23,8 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     @await Html.PartialAsync("~/Areas/Admin/Views/Shared/_adminScriptsPartial.cshtml")
+    @RenderSection("scripts", false)
 </body>
 </html>

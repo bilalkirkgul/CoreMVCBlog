@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "BlogListExcell";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>BlogListExcell</h1>
+
+<br />
+
+@*<button class="btn btn-primary" onclick="DownloadExcellBlogList()">Excell Blog List İndir</button>*@
+@*<a asp-area="Admin" asp-controller="Blog" asp-action="ExportStaticExellBlogList" class="btn btn-primary">( Excell ) Blog Listesini İndir</a>*@
+<a asp-area="Admin" asp-controller="Blog" asp-action="ExportDynamicExellBlogList" class="btn btn-primary">( Excell ) Dynamic Blog List Download</a>
+
+
+@*<script>
+        function DownloadExcellBlogList() {
+            window.open("/Admin/Blog/ExportStaticExellBlogList");
+        }
+    </script>*@
+
