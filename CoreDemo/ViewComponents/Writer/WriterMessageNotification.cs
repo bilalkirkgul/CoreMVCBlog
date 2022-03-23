@@ -18,13 +18,11 @@ namespace CoreDemo.ViewComponents.Writer
             this.messageTwoService = message;
         }
 
+        //Yazara gönderilen mesajların bildirimi.
         public IViewComponentResult Invoke()
         {
             int userId = int.Parse(User.Identity.Name);      
-            var values = messageTwoService.GetInboxListReceiverByWriter(userId);
-
-            
-
+            var values = messageTwoService.GetInboxListReceiverByWriter(userId); //alıcıya ait msjların listeleme methodu kullanıldı
             ViewBag.MessageCount = values.Count();
             return View(values);
         }

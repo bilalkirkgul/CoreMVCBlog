@@ -17,6 +17,9 @@ namespace CoreDemo.ViewComponents.Writer
             notificationService = notification;
         }
 
+
+        //Yazar bildirimleri Writer Navbar da listelendi
+
         public IViewComponentResult Invoke()
         {
             var values = notificationService.GetListStatusTrue();

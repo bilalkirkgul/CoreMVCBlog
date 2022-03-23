@@ -32,7 +32,10 @@ namespace CoreDemo
             services.AddControllersWithViews().AddFluentValidation();//fluentvalidation kullanýma açtým
             services.AddTransient<IValidator, WriterValidator>(); //bll katmanýnda olan fluentvalidation dahil edildi
             services.AddTransient<IValidator, BlogValidator>();
+
             services.AddScobeBLL(); //BLL Katmanýnda dependencyInjection prensibi için oluþturduðum method dahil edildi.
+
+
             //services.AddSession();
             services.AddMvc(config =>
             {

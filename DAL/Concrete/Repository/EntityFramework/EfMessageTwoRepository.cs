@@ -24,7 +24,7 @@ namespace DAL.Concrete.Repository.EntityFramework
         public MessageTwo GetMessageInReceiverWriter(int messageId)
         {
 
-            //Mesaj id'sine göre mesajı listeleme işlemi yaoparken SenderUser Gönderen kişinin profil bilgilerine ulaşma işlmei için includes yapıldı..
+            //Tekil olarak Mesaj id'sine göre mesajı listeleme işlemi yaoparken SenderUser Mesajı Gönderen kişinin profil bilgilerine ulaşma işlmei için includes yapıldı..
 
             using (var c = new BlogDbContext())
                 return c.MessageTwos.Where(a=>a.MessageID== messageId).Include(a => a.SenderUser).SingleOrDefault();

@@ -39,7 +39,7 @@ namespace BLL.Concrete
 
         public List<Contact> GetList()
         {
-            throw new NotImplementedException();
+            return contactDAL.GetListAll();
         }
 
        
