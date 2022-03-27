@@ -16,6 +16,7 @@ namespace DAL.Concrete.Repository
         {
             using var context = new BlogDbContext();
             //context.Add(entitiy);
+            //context.Set<TEntity>().Add(entitiy);
             context.Entry(entitiy).State = EntityState.Added;
             context.SaveChanges();
         }
@@ -24,6 +25,7 @@ namespace DAL.Concrete.Repository
         {
             using var context = new BlogDbContext();
             //context.Update(entitiy);
+            //context.Set<TEntity>().Update(entitiy);
             context.Entry(entitiy).State = EntityState.Modified;
             context.SaveChanges();
         }

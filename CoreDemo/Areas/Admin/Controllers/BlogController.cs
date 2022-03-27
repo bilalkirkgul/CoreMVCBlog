@@ -23,45 +23,45 @@ namespace CoreDemo.Areas.Admin.Controllers
 
 
         #region Database' den veri çekmeden Deneme amaçlı yapılmıştır
-        public IActionResult ExportStaticExellBlogList()
-        {
+        //public IActionResult ExportStaticExellBlogList()
+        //{
 
-            using (var workbook = new XLWorkbook())
-            {
-                var workSheet = workbook.Worksheets.Add("Blog Listesi");
-                workSheet.Cell(1, 1).Value = "BlogID";//1.satır 1. sütun
-                workSheet.Cell(1, 2).Value = "Blog Adı";
+        //    using (var workbook = new XLWorkbook())
+        //    {
+        //        var workSheet = workbook.Worksheets.Add("Blog Listesi");
+        //        workSheet.Cell(1, 1).Value = "BlogID";//1.satır 1. sütun
+        //        workSheet.Cell(1, 2).Value = "Blog Adı";
 
-                int BlogRowCount = 2; //Birinci satıra başlık yazılacağı için 2. satırdan başlattık..
-                foreach (var item in GetBlogList())
-                {
-                    workSheet.Cell(BlogRowCount, 1).Value = item.ID;
-                    workSheet.Cell(BlogRowCount, 2).Value = item.BlogName;
-                    BlogRowCount++;
-                }
+        //        int BlogRowCount = 2; //Birinci satıra başlık yazılacağı için 2. satırdan başlattık..
+        //        foreach (var item in GetBlogList())
+        //        {
+        //            workSheet.Cell(BlogRowCount, 1).Value = item.ID;
+        //            workSheet.Cell(BlogRowCount, 2).Value = item.BlogName;
+        //            BlogRowCount++;
+        //        }
 
-                using (var stream = new MemoryStream())
-                {
-                    workbook.SaveAs(stream);
-                    var content = stream.ToArray();
-                    return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Calisma1.xlsx");
-                }
-            }
+        //        using (var stream = new MemoryStream())
+        //        {
+        //            workbook.SaveAs(stream);
+        //            var content = stream.ToArray();
+        //            return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Calisma1.xlsx");
+        //        }
+        //    }
 
 
-        }
+        //}
 
-        public List<BlogViewModelDeneme> GetBlogList()
-        {
-            List<BlogViewModelDeneme> blogModel = new List<BlogViewModelDeneme>()
-            {
-                new BlogViewModelDeneme{ID=1,BlogName="C# Programlama Giriş"},
-                new BlogViewModelDeneme{ID=2,BlogName="JS Programlama Giriş"},
-                new BlogViewModelDeneme{ID=3,BlogName="Pyhton Programlama Giriş"},
-            };
+        //public List<BlogViewModelDeneme> GetBlogList()
+        //{
+        //    List<BlogViewModelDeneme> blogModel = new List<BlogViewModelDeneme>()
+        //    {
+        //        new BlogViewModelDeneme{ID=1,BlogName="C# Programlama Giriş"},
+        //        new BlogViewModelDeneme{ID=2,BlogName="JS Programlama Giriş"},
+        //        new BlogViewModelDeneme{ID=3,BlogName="Pyhton Programlama Giriş"},
+        //    };
 
-            return blogModel;
-        }
+        //    return blogModel;
+        //}
 
 
         #endregion
@@ -80,6 +80,9 @@ namespace CoreDemo.Areas.Admin.Controllers
 
         public IActionResult ExportDynamicExellBlogList()
         {
+
+            //Excell tablosu oluşturma işlemi aşağıda yapılmıştır..
+
             using (var workbook = new XLWorkbook())
             {
                 var workSheet = workbook.Worksheets.Add("Blog Listesi"); //Çalışma Dosyası Adı
