@@ -12,15 +12,18 @@
 <br />
 <div id="divWriter">Yazarlar Gelecek</div>
 <br />
-<div id="writerGet">Getirilen Yazar</div>
-<br />
-<div ><input type="text" id="writerId" placeholder="Yazar Id değerini giriniz" class="form-control"/></div>
+<div id="alert">
 
-@section scripts{ 
+</div>
+<br />
+<br />
+<p id="WritersName"></p>
+<div><input type="text" id="writerId" placeholder="Yazar Id değerini giriniz" class="form-control" /></div>
+
+@section scripts{
 
     <script>
         $("#writerList").click(function () {
-
             $.ajax({
                 contentType: "application/json",
                 dataType: "json",
@@ -41,14 +44,19 @@
 
         $("#writerGetById").click(x => {
             let id = $("#writerId").val();
-            console.log(id);
-
+            $.ajax({
+                type: "Get",
+                url: "/Admin/Writer/GetWriterByID",
+                contentType: "application/json: charset=utf-8",
+                dataType: "json",
+                data: { writerId: id },
+                success: function (values) {
+                    let writers = jQuery.parseJSON(values);
+                    $("#alert").html("<div class='alert alert-success' role='alert'>" + writers.Id + " " + writers.Name + "</div>")
+                    $("#WritersName").html(writers.Name)
+                }
+            })
         })
-
-
-
-
-
     </script>
 
 

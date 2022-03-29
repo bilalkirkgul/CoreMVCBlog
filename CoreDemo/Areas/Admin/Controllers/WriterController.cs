@@ -28,7 +28,8 @@ namespace CoreDemo.Areas.Admin.Controllers
             var jsonWriters = JsonConvert.SerializeObject(writers);
             return Json(jsonWriters);
         }
-        [HttpGet]
+        
+        
         public IActionResult GetWriterByID(int writerId)
         {
             var findWriter = writers.FirstOrDefault(x => x.Id == writerId);
