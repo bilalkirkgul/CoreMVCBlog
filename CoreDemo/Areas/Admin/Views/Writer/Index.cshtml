@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yazar Ajax İşlemleri</h1>
+<br />
+<button type="button" class="btn btn-outline-primary" id="writerList">Yazarları Listele</button>
+<button type="button" class="btn btn-outline-success" id="writerGetById">Yazar Getir</button>
+<br />
+<br />
+<div id="divWriter">Yazarlar Gelecek</div>
+<br />
+<div id="writerGet">Getirilen Yazar</div>
+<br />
+<div ><input type="text" id="writerId" placeholder="Yazar Id değerini giriniz" class="form-control"/></div>
+
+@section scripts{ 
+
+    <script>
+        $("#writerList").click(function () {
+
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/Admin/Writer/WriterList",
+                success: function (data) {
+
+                    let writers = jQuery.parseJSON(data);
+                    let tableHtml = "<table class=table table-bordered><tr><th>#</th><th>Writer Name</th></tr>";
+                    $.each(writers, (index, value) => {
+                        tableHtml += `<tr><td>${value.Id}</td><td>${value.Name}</td></tr>`
+                    });
+                    tableHtml += "</table>";
+                    $("#divWriter").html(tableHtml);
+                }
+            });
+        });
+
+        $("#writerGetById").click(x => {
+            let id = $("#writerId").val();
+            console.log(id);
+
+        })
+
+
+
+
+
+    </script>
+
+
+}

@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div id="DataChartDiv" style="width:800px; height:600px">
+            <h2>Burası chart alanıdır</h2>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+
+    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.setOnLoadCallback(drawChart);
+
+
+    function drawChart() {
+        $(function () {
+            $.ajax({
+                type: 'GET',              
+                url: '/Admin/Chart/CategoryChart/',
+                success: function (chartsdata) {
+
+                    var Data = chartsdata.jsonlist;
+                    var object = new google.visualization.DataTable();
+                    object.addColumn('string', 'categoryname');
+                    object.addColumn('number', 'categorycount');
+
+                    for (var i = 0; i < Data.length; i++) {
+                        object.addRow([Data[i].categoryname, Data[i].categorycount]);
+                    }
+                    var options = {
+                        title: "Google Chart Tablosu",
+                        position: "top",
+                        fontsize: "16px"
+                    };
+
+                    var chart = new google.visualization.PieChart(document.getElementById('DataChartDiv'));
+                    chart.draw(object, options);
+
+
+                }
+
+            });
+
+
+        });
+    }
+</script>
+
+
+
+
+

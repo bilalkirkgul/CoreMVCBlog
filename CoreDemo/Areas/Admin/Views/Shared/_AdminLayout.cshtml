@@ -25,6 +25,6 @@
         </div>
     </div>
     @await Html.PartialAsync("~/Areas/Admin/Views/Shared/_adminScriptsPartial.cshtml")
-    @RenderSection("scripts", false)
+    @await RenderSectionAsync("scripts", false)
 </body>
 </html>
