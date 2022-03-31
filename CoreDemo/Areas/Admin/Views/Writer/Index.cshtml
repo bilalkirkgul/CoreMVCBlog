@@ -8,6 +8,8 @@
 <br />
 <button type="button" class="btn btn-outline-primary" id="writerList">Yazarları Listele</button>
 <button type="button" class="btn btn-outline-success" id="writerGetById">Yazar Getir</button>
+<button type="button" class="btn btn-outline-warning" id="AddWriter">Yazar Ekle</button>
+<button type="button" class="btn btn-outline-warning" id="DeleteWriter">Yazar Sil</button>
 <br />
 <br />
 <div id="divWriter">Yazarlar Gelecek</div>
@@ -16,16 +18,27 @@
 
 </div>
 <br />
+<input type="text" id="deneme" value="" />
+
 <br />
 <p id="WritersName"></p>
 <div><input type="text" id="writerId" placeholder="Yazar Id değerini giriniz" class="form-control" /></div>
-
+<br />
+<br />
+<div>
+    <input type="text" id="AddWriterId" placeholder="Yazar Id değerini giriniz" class="form-control" />
+    <br />
+    <input type="text" id="AddWriterName" placeholder="Yazar Adınızı" class="form-control" />
+</div>
+<br />
+<br />
+<div><input type="text" id="delWriterId" placeholder="Silinecek Yazar Id değerini giriniz" class="form-control" /></div>
 @section scripts{
 
     <script>
         $("#writerList").click(function () {
             $.ajax({
-                contentType: "application/json",
+                contentType: "application/json: charset=utf-8",
                 dataType: "json",
                 type: "Get",
                 url: "/Admin/Writer/WriterList",
@@ -54,9 +67,43 @@
                     let writers = jQuery.parseJSON(values);
                     $("#alert").html("<div class='alert alert-success' role='alert'>" + writers.Id + " " + writers.Name + "</div>")
                     $("#WritersName").html(writers.Name)
+                    $("#deneme").val(writers.Name)
                 }
             })
         })
+
+        $("#AddWriter").click(function () {
+
+            let writer = {
+                Id: $("#AddWriterId").val(),
+                Name: $("#AddWriterName").val()
+            };
+            $.ajax({
+                type: "Post",
+                url: "/Admin/Writer/AddWriter",
+                data: writer,
+                success: function (values) {
+                    let result = jQuery.parseJSON(values);
+                    location.reload();
+                }
+            });
+        });
+
+        $("#DeleteWriter").click(x => {
+            let id = $("#delWriterId").val();
+            $.ajax({
+                url: "/Admin/Writer/DeleteWriter/" + id,
+                type: "post",               
+                dataType: "json",
+                success: function (values) {
+                    let result = jQuery.parseJSON(values);
+                    alert("Yazar silme işlemi gerçekleşti")
+                }
+            })
+
+
+        })
+
     </script>
 
 
