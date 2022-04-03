@@ -9,25 +9,19 @@ using System.Threading.Tasks;
 
 namespace DAL.Concrete.Repository.EntityFramework
 {
-    class EfMessageTwoRepository: GenericRepository<MessageTwo>, IMessageTwoDAL
+    class EfMessageTwoRepository : GenericRepository<MessageTwo>, IMessageTwoDAL
     {
-
-
         public List<MessageTwo> GetListMessageInReceiverWriter(int receiverId)
         {
-
             //Alıcı id'sine göre mesajları listeleme işlemi için oluşturdum. SenderUser Gönderen kişinin profil bilgilerine ulaşma işlmei için includes yapıldı..
-
             using (var c = new BlogDbContext())
-                return c.MessageTwos.Include(a => a.SenderUser).Where(a=>a.ReceiverID==receiverId).ToList();
+                return c.MessageTwos.Include(a => a.SenderUser).Where(a => a.ReceiverID == receiverId).ToList();
         }
         public MessageTwo GetMessageInReceiverWriter(int messageId)
         {
-
             //Tekil olarak Mesaj id'sine göre mesajı listeleme işlemi yaoparken SenderUser Mesajı Gönderen kişinin profil bilgilerine ulaşma işlmei için includes yapıldı..
-
             using (var c = new BlogDbContext())
-                return c.MessageTwos.Where(a=>a.MessageID== messageId).Include(a => a.SenderUser).SingleOrDefault();
+                return c.MessageTwos.Where(a => a.MessageID == messageId).Include(a => a.SenderUser).SingleOrDefault();
         }
 
 
