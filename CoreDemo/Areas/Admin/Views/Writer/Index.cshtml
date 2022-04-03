@@ -10,6 +10,7 @@
 <button type="button" class="btn btn-outline-success" id="writerGetById">Yazar Getir</button>
 <button type="button" class="btn btn-outline-warning" id="AddWriter">Yazar Ekle</button>
 <button type="button" class="btn btn-outline-warning" id="DeleteWriter">Yazar Sil</button>
+<button type="button" class="btn btn-outline-warning" id="UpdateWriter">Yazar Güncelle</button>
 <br />
 <br />
 <div id="divWriter">Yazarlar Gelecek</div>
@@ -33,6 +34,13 @@
 <br />
 <br />
 <div><input type="text" id="delWriterId" placeholder="Silinecek Yazar Id değerini giriniz" class="form-control" /></div>
+<br />
+<br />
+<div>
+    <input type="text" id="updateWriterId" placeholder="Güncellenecek Yazar Id değerini giriniz" class="form-control" />
+    <input type="text" id="updateWriterName" placeholder="Güncellenecek Yazar İsmini değerini giriniz" class="form-control" />
+</div>
+
 @section scripts{
 
     <script>
@@ -89,11 +97,28 @@
             });
         });
 
+        $("#UpdateWriter").click(function () {
+            let writer = {
+                Id: $("#updateWriterId").val(),
+                Name: $("#updateWriterName").val()
+            };
+            $.ajax({
+                type: "Post",
+                url: "/Admin/Writer/UpdateWriter",
+                data: writer,
+                success: function (values) {
+                    let result = jQuery.parseJSON(values);
+                    location.reload();
+                }
+            });
+
+        })
+
         $("#DeleteWriter").click(x => {
             let id = $("#delWriterId").val();
             $.ajax({
                 url: "/Admin/Writer/DeleteWriter/" + id,
-                type: "post",               
+                type: "post",
                 dataType: "json",
                 success: function (values) {
                     let result = jQuery.parseJSON(values);
