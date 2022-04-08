@@ -28,16 +28,15 @@ namespace CoreDemo.Areas.Admin.Controllers
             var jsonWriters = JsonConvert.SerializeObject(writers);
             return Json(jsonWriters);
         }
-        
-        
+      
         public IActionResult GetWriterByID(int writerId)
         {
             var findWriter = writers.FirstOrDefault(x => x.Id == writerId);
             var jsonWriters = JsonConvert.SerializeObject(findWriter);
             return Json(jsonWriters);
         }
-      
-        [HttpPost]
+
+       
         public IActionResult AddWriter(WriterVM writer)
         {
             writers.Add(writer);

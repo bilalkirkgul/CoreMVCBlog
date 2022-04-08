@@ -54,10 +54,13 @@ namespace BLL.Concrete
         }
 
 
-
+        /// <summary>
+        /// Dal katmanında includes işlemi yaptım blog bilgilerini çağırırken içerisine category tüm bilgilerinide dahil ettim.
+        /// </summary>
+        /// <returns></returns>
         public List<Blog> GetListBlogInCategory()
         {
-            //dal katmanında includes işlemi yaptım blog bilgilerini çağırırken içerisine category tüm bilgilerinide dahil ettim.
+            
            return blogDAL.GetListWithCategory();
         }
         public List<Blog> GetBlogByIDList(int id)

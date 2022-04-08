@@ -1,0 +1,41 @@
+﻿@using CoreDemo.Controllers
+@model List<EmployeeDTO>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-6">
+    <div class="ibox ">
+        <div class="container">
+            <div class="ibox-content">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Adı Soyadı</th>
+                            <th><a href="@Url.Action("AddEmployee","EmployeeTest")" class="btn btn-outline-success">Kişi Ekle</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.Name</td>
+                                <td><a href="@Url.Action("EditEmployee","EmployeeTest",new {id=item.ID })" class="btn btn-outline-warning">Düzenle</a></td>
+                                <td><a href="@Url.Action("DeleteEmployee","EmployeeTest",new {id=item.ID })" class="btn btn-outline-danger">Sil</a></td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+

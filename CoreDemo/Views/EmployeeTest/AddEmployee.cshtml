@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "AddEmployee";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using CoreDemo.Controllers
+@model EmployeeDTO
+
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            <h2 class="card-description"> Kişi Ekleme Paneli </h2>
+            <form asp-area="" asp-controller="EmployeeTest" asp-action="AddEmployee" method="post" class="forms-sample">
+                <div class="form-group">
+                    <label for="exampleInputName1">Kişi Adı</label>
+                    <input type="text" asp-for="Name" class="form-control" id="exampleInputName1" placeholder="Kişi Adını Giriniz">
+                   
+                </div>
+               
+                <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
