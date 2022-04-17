@@ -59,8 +59,7 @@ namespace BLL.Concrete
         /// </summary>
         /// <returns></returns>
         public List<Blog> GetListBlogInCategory()
-        {
-            
+        {           
            return blogDAL.GetListWithCategory();
         }
         public List<Blog> GetBlogByIDList(int id)

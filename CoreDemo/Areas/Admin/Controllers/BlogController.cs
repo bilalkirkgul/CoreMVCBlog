@@ -82,7 +82,7 @@ namespace CoreDemo.Areas.Admin.Controllers
         {
 
             //Excell tablosu oluşturma işlemi aşağıda yapılmıştır..
-
+            //using ClosedXML.Excel; eklemesi yapıldı
             using (var workbook = new XLWorkbook())
             {
                 var workSheet = workbook.Worksheets.Add("Blog Listesi"); //Çalışma Dosyası Adı

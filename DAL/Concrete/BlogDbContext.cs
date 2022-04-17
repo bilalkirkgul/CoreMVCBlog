@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,12 @@ using System.Threading.Tasks;
 
 namespace DAL.Concrete
 {
-    class BlogDbContext : DbContext
+   public class BlogDbContext : IdentityDbContext<AppUser, AppRole,int>
     {
+        //Microsoft.AspNetCore.Identity;
+        //Microsoft.AspNetCore.Identity.EntityFrameworkCore paketleri yüklendi
+        //IdentityDbContext DbContext sınıfından miras aldığı için DbContext den gelen bütn özellikleri kullanılmaktadır.
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

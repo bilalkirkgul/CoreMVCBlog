@@ -21,12 +21,12 @@ namespace CoreDemo.Areas.Admin.Controllers
             this.categoryService = categoryService;
         }
 
-        public IActionResult Index(int page=1)
-        {
+        public IActionResult Index(int page = 1)
+        {   //X.PagedList ve XPAgedList.MVC.Core Paketleri projeye dahil edildi.
             //başlangıç değeri olarak 1 verdik ve her sayfada kaç değer istiyorsak ayrıca belirtiyoruz..
             //ToPagedList() using X.PagedList kütüpanesinden geliyor..
             //Index sayfasında  @Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new { page})) ayarlaması yaptık.
-            var dataValues = categoryService.GetList().ToPagedList(page,3);
+            var dataValues = categoryService.GetList().ToPagedList(page, 3);
             return View(dataValues);
         }
         [HttpGet]
@@ -42,7 +42,7 @@ namespace CoreDemo.Areas.Admin.Controllers
             if (validations.IsValid)
             {
                 //var WriterID = int.Parse(User.Identity.Name);
-                category.CategoryStatus = true;                
+                category.CategoryStatus = true;
                 categoryService.Insert(category);
                 return RedirectToAction("Index", "Category", new { area = "Admin" });
             }
@@ -63,7 +63,7 @@ namespace CoreDemo.Areas.Admin.Controllers
             var deleteCategory = categoryService.GetById(categoryId);
             deleteCategory.CategoryStatus = false;
             categoryService.Update(deleteCategory);
-            return RedirectToAction("Index", "Category",new { area = "Admin" });
+            return RedirectToAction("Index", "Category", new { area = "Admin" });
         }
         public IActionResult StatusTrueCategory(int categoryId)
         {

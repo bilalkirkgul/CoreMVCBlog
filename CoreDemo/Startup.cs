@@ -1,5 +1,7 @@
 using BLL.Concrete.DependencyInjection;
 using BLL.ValidationRules;
+using DAL.Concrete;
+using EntityLayer.Concrete;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -28,7 +30,9 @@ namespace CoreDemo
 
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services) //yapýlandýrma servisi (hizmetleri)
-        {      
+        {
+            services.AddDbContext<BlogDbContext>();
+            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BlogDbContext>();
             services.AddControllersWithViews().AddFluentValidation();//fluentvalidation kullanýma açtým
             services.AddTransient<IValidator, WriterValidator>(); //bll katmanýnda olan fluentvalidation dahil edildi
             services.AddTransient<IValidator, BlogValidator>();
