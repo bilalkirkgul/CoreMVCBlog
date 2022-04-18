@@ -1,4 +1,6 @@
 ﻿using BLL.Abstract;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,15 +16,14 @@ namespace CoreDemo.ViewComponents.Writer
         public WriterAboutOnDashboard(IWriterService writer)
         {
            this.writerService = writer;
-        }
-
+        }     
         public IViewComponentResult Invoke()
         {
-
             //Dashbord Index Sayfası yazar Hakkında kısmı
-           var writerId = int.Parse(User.Identity.Name);
-           var values = writerService.GetById(writerId);
-            return View(values);
+            var writerName = User.Identity.Name;
+            ViewBag.Mail = writerName;
+            //var values = writerService.GetById(writerId);
+            return View();
         }
 
 

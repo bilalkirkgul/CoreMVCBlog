@@ -13,11 +13,11 @@ namespace CoreDemo.Controllers
     [AllowAnonymous]
     public class RegisterUserController : Controller
     {
-        
+
         //IdentityUser Model Kullanılacak.. Create vs 123-124
         //Microsoft.AspNetCore.Identity; _userManager.CreateAsync
         //Microsoft.AspNetCore.Identity.EntityFrameworkCore paketleri yüklendi
-
+        //sweetalert kullanıldı
         private readonly UserManager<AppUser> _userManager;
 
         public RegisterUserController(UserManager<AppUser> userManager)
@@ -41,13 +41,13 @@ namespace CoreDemo.Controllers
                     NameSurname = userSignUpVM.NameSurname,
 
                 };
-                //şifrede büyük-küçük-rakam ve karakter zorunlu
+                //şifrede büyük-küçük-rakam ve karakter zorunlu - sonradan startup'da değişiklik yapıldı
                 //bilalL123*
                 var result = await _userManager.CreateAsync(user, userSignUpVM.Password);
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Login", "Account");
+                    return RedirectToAction("Index", "Login");
                 }
                 else
                 {

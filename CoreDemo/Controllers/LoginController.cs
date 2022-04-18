@@ -1,9 +1,11 @@
 ﻿using BLL.Abstract;
+using CoreDemo.Models;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,51 +18,44 @@ namespace CoreDemo.Controllers
     [AllowAnonymous] //proje seviyesinde tanımlanan bütün kurallardan muaf olmak için kullandım
     public class LoginController : Controller
     {
-        private readonly IWriterService writerService;
-        public LoginController(IWriterService writer)
-        {
-            writerService = writer;
-        }
+        //SignInManager<AppUser> kullanıldı Account Controllerde Kendi oluşturduğum service üzerinden kontrol sağlıyordum burda direk kütüphane aracılığı ile işlem yapıyorum..
+        private readonly SignInManager<AppUser> _signInManager;
 
+        public LoginController(SignInManager<AppUser> signInManager)
+        {
+            _signInManager = signInManager;
+        }
 
         public IActionResult Index()
         {
             return View();
         }
+
+ 
         [HttpPost]
-        public async Task<IActionResult> Index(Writer writer)
+        public async Task<IActionResult> Index(UserSignInVM value)
         {
-            var dataValues = writerService.GetLoginCheck(writer.WriterMail, writer.WriterPassword);
-            if (dataValues!=null)
+           
+            if (ModelState.IsValid)
             {
-                List<Claim> claims = new List<Claim>()
+                //false = hatırlasınmı 
+                //true = 5 kez yanlış girildiğinde belli süre banlanıyor..
+                var result = await _signInManager.PasswordSignInAsync(value.UserName, value.Password, false, true);
+                if (result.Succeeded)
                 {
-                    new Claim(ClaimTypes.Name,dataValues.WriterMail),
-                    new Claim(ClaimTypes.UserData,dataValues.WriterID.ToString()),
-                    new Claim(ClaimTypes.NameIdentifier,dataValues.WriterName)
-
-                };
-
-                //burada Authentiontype bilgisi tutuluyor. string alana type bilgisi geçilebilinir. örneğin admin, writer vs vs.
-                //var userIdentity = new ClaimsIdentity(claims,"a");
-                //ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-                //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(principal));
-                //return RedirectToAction("Index", "Writer");
-
-                #region 2. alternatif yol
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-                return RedirectToAction("Index", "Writer");
-                #endregion
-
+                    return RedirectToAction("Index", "Dashboard");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
-                ViewBag.Message = "Hatalı Giriş Yapıldı";
+                ViewBag.Message = "Kullanıcı bilgilerinizi kontrol ediniz";
                 return View();
             }
 
-            
         }
     }
 }

@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-@model Writer
+@model UserSignInVM
 
 <!--/main-->
 <section class="main-content-w3layouts-agileits">
@@ -20,20 +20,20 @@
                 </div>
                 <form asp-controller="Login" asp-action="Index" method="post">
                     <div class="form-group">
-                        <label for="exampleInputEmail1 mb-2">Email Adresiniz</label>
-                        <input asp-for="WriterMail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
+                        <label for="exampleInputEmail1 mb-2">Kullanıcı Adınız</label>
+                        <input asp-for="UserName" type="text" class="form-control" placeholder="" required="">
                         @*<small id="emailHelp" class="form-text text-muted">Biz email adresinizi kimseyle paylaşmayacağız</small>*@
-                    </div>
+                    </div>                    
                     <div class="form-group">
                         <label for="exampleInputPassword1 mb-2">Şifreniz</label>
-                        <input asp-for="WriterPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
+                        <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
                     </div>
                     <div class="form-check mb-2">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Beni Hatırla</label>
                     </div>
                     <button type="submit" class="btn btn-primary submit mb-4">Giriş Yap</button>
-                    <p><a href="@Url.Action("Index","Register")"> Bir Hesabınız Yok Mu ??</a></p>
+                    <p><a href="@Url.Action("Index","RegisterUser")"> Bir Hesabınız Yok Mu ??</a></p>
                 </form>
             </div>
         </div>

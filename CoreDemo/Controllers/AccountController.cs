@@ -26,6 +26,11 @@ namespace CoreDemo.Controllers
         {
             this.writerService = writerService;
         }
+
+        //IdentityUser ve IdentityUserRole Kullanımından sonra bu yapı çalışmayacağı için bu yapıyla alakalı olan bağı ilişkiyi kestim..
+        //Login ve Register için ayrı ayrı Controller oluşturdum
+
+
         public IActionResult Register()
         {
             return View();
@@ -33,6 +38,8 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public IActionResult Register(RegisterVM user)
         {
+            //<script src="~/lib/jquery/dist/sweetalert.min.js"></script>
+
 
             if (!string.IsNullOrEmpty(user.Password) || !string.IsNullOrEmpty(user.PasswordTwo))
             {
@@ -79,7 +86,8 @@ namespace CoreDemo.Controllers
         {
             return View();
         }
-        [HttpPost]
+        //[HttpPost]
+        #region IdentityUser ve IdentityUserRole benim kontrolümde olan eski yöntem
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
             var loginWriter = writerService.GetLoginCheck(loginVM.Email, loginVM.Password);
@@ -92,32 +100,23 @@ namespace CoreDemo.Controllers
                     new Claim(ClaimTypes.Email,loginWriter.WriterMail)
 
                 };
-
                 //burada Authentiontype bilgisi tutuluyor. string alana type bilgisi geçilebilinir. örneğin admin, writer vs vs.
                 //var userIdentity = new ClaimsIdentity(claims, "a");
                 //ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                 //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(principal));
                 //return RedirectToAction("Index", "Dashboard");
-
-
                 #region 2. alternatif yol
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-
-
-                if (loginWriter.WriterID==3)
+                if (loginWriter.WriterID == 3)
                 {
-                    return RedirectToAction("Index", "Category",new { area = "Admin" });
+                    return RedirectToAction("Index", "Category", new { area = "Admin" });
                 }
                 else
                 {
                     return RedirectToAction("Index", "Dashboard");
                 }
-
-               
-                
                 #endregion
-
             }
             else
             {
@@ -126,6 +125,7 @@ namespace CoreDemo.Controllers
             }
 
         }
+        #endregion
 
         //public IActionResult LoginName()
         //{
